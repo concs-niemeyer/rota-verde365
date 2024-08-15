@@ -19,7 +19,7 @@ export function Dashboard() {
   const [usuarios, setUsuarios] = useState([]);
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  const [locationName, setLocationName] = useState('');
+  const [locationName, setLocationName] = useState("");
 
   // Função para buscar locais
   async function buscarLocais() {
@@ -28,13 +28,18 @@ export function Dashboard() {
       if (response.ok) {
         const data = await response.json();
         setLocais(data);
-
-        // Se há locais, atualize as coordenadas do primeiro local
+        // Verifique se há locais
         if (data.length > 0) {
-          const primeiroLocal = data[0];
-          setLatitude(primeiroLocal.localizacao.latitude);
-          setLongitude(primeiroLocal.localizacao.longitude);
-          setLocationName(primeiroLocal.nome);
+          // Gere um índice aleatório
+          const indiceAleatorio = Math.floor(Math.random() * data.length);
+
+          // Pegue o local aleatório usando o índice
+          const localAleatorio = data[indiceAleatorio];
+
+          // Atualize as coordenadas e o nome do local
+          setLatitude(localAleatorio.localizacao.latitude);
+          setLongitude(localAleatorio.localizacao.longitude);
+          setLocationName(localAleatorio.nome);
         }
       } else {
         console.error("Erro ao buscar locais");
@@ -76,7 +81,7 @@ export function Dashboard() {
         />
         <Card title="Locais" total={locais.length} iconElement={MapPinned} />
       </div>
-      
+
       {latitude && longitude && (
         <div className="mapa-dashboard">
           <Mapa
@@ -86,7 +91,7 @@ export function Dashboard() {
           />
         </div>
       )}
-      
+
       <div className="table-container">
         <header className="headerContainer">
           <div>
