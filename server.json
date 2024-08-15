@@ -53,6 +53,42 @@
 		  "ddd": "11"
 		},
 		"id": "60ce"
+	  },
+	  {
+		"nome": "Lucas Almeida",
+		"sexo": "Masculino",
+		"cpf": "567.890.123-45",
+		"data_nascimento": "1992-09-30",
+		"email": "lucas.almeida@gmail.com",
+		"senha": "password123",
+		"endereço": {
+		  "cep": "05000-000",
+		  "logadouro": "Rua dos Três Irmãos",
+		  "complemento": "Casa 5",
+		  "bairro": "Perdizes",
+		  "localidade": "São Paulo",
+		  "uf": "SP",
+		  "ddd": "11"
+		},
+		"id": "71df"
+	  },
+	  {
+		"nome": "Juliana Costa",
+		"sexo": "Feminino",
+		"cpf": "678.901.234-56",
+		"data_nascimento": "1995-12-01",
+		"email": "juliana.costa@gmail.com",
+		"senha": "mypassword",
+		"endereço": {
+		  "cep": "23050-000",
+		  "logadouro": "Avenida das Américas",
+		  "complemento": "Bloco 10",
+		  "bairro": "Barra da Tijuca",
+		  "localidade": "Rio de Janeiro",
+		  "uf": "RJ",
+		  "ddd": "21"
+		},
+		"id": "82e3"
 	  }
 	],
 	"locais": [
