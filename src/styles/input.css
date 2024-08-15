@@ -1,6 +1,5 @@
 /* Ajuste para a classe que pode receber foco, como um input ou textarea */
 .content-input {
-	max-width: 25vw;
 	padding-right: 10px;
 	color: var(--text-color);
 	background-color: transparent;
