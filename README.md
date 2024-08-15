@@ -54,4 +54,3 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
 ---
 
 Obrigado por usar o Rotaverde365. Esperamos que você aproveite sua experiência e encontre muitos locais incríveis!
-=======
