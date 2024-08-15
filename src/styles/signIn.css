@@ -1,0 +1,118 @@
+.container-sign-in {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh; /* Ajusta a altura para cobrir a viewport */
+	background-color: var(--neutral-color);
+  }
+  
+  .hero-sign-in {
+	display: flex;
+	background-image: url("/src/assets/pictures/background-rotaverde.jpg");
+	background-size: cover;
+	background-position: 0%;
+	height: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.h1-sign-in {
+	text-align: center;
+	color: var(--text-color);
+}
+
+.logotipo-sign-in{
+	display: flex;
+	height: 40vh;
+}
+
+.h2-sign-in {
+	display: flex;
+	color: var(--background-color);
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.content-sign-in {					
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	max-width: 400px;
+	width: 100%;
+	background: var(--background-color);
+	padding: 0 24px 0 24px;
+	box-shadow: 6px 0 4px 0 var(--secondary-color) inset;
+	border-radius: 8px; /* Adiciona bordas arredondadas para o container */
+}
+  
+.form-sign-in {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%; /* Garante que o formulário se ajuste ao container */
+  }
+  
+  .form-input {
+	width: 100%;
+	padding: 0.5rem;
+	margin: 0.5rem 0; /* Ajusta o espaço entre inputs */
+	color: var(--text-color);
+	background-color: var(--background-color);
+	border: 1px solid var(--neutral-color);
+	border-radius: 4px;
+	font-size: 1rem;
+	box-sizing: border-box;
+  }
+  
+  .form-input:focus {
+	border-color: var(--primary-color);
+	outline: none;
+  }
+  
+  .btn-cadastrar,
+  .btn-sign-in {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--text-color);
+	margin-top: 8px;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	padding: 0.6em 1.2em;
+	font-size: 1em;
+	font-weight: 500;
+	font-family: inherit;
+	cursor: pointer;
+	transition: background-color 0.25s, border-color 0.25s;
+  }
+  
+  .btn-cadastrar {
+	width: 100%;
+	background-color: var(--neutral-color);
+ }
+  
+  .btn-sign-in {
+	width: 100%;
+	color: var(--background-color);
+	background-color: var(--secondary-color);
+
+  }
+  
+  .btn-sign-in:hover,
+  .btn-cadastrar:hover {
+	border-color: var(--text-color);
+	color: var(--text-color);
+	background-color: var(--primary-color); /* Adiciona uma cor de fundo ao passar o mouse */
+  }
+  
+  .btn-sign-in:focus,
+  .btn-cadastrar:focus,
+  .btn-sign-in:focus-visible,
+  .btn-cadastrar:focus-visible {
+	outline: 4px auto -webkit-focus-ring-color;
+  }
+  

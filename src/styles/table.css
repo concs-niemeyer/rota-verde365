@@ -1,0 +1,58 @@
+/* Container para centralizar a tabela na página */
+.table-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0;
+  }
+  
+  /* Estilização geral da tabela */
+  table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 20px 0;
+	background-color: var(--background-color);
+	border-radius: 8px; /* Bordas arredondadas */
+	overflow: hidden; /* Esconde bordas arredondadas que vazam */
+  }
+  
+  /* Cabeçalhos da tabela */
+  thead th {
+	background-color: var(--background-color);
+	color: var(--text-color); /* Cor do texto dos cabeçalhos */
+	padding: 12px; /* Espaçamento interno dos cabeçalhos */
+	text-align: center; /* Alinhamento do texto no centro */
+  }
+  
+  /* Células da tabela */
+  tbody td {
+	padding: 8px; /* Espaçamento interno das células */
+	text-align: center; /* Alinhamento do texto no centro */
+	border-bottom: 1px solid var(--primary-color); /* Borda inferior das células */
+  }
+  
+  /* Linha da tabela */
+  tr:nth-child(even) {
+	background-color: var(--secondary-color); /* Cor de fundo das linhas pares */
+  }
+  
+  tr:hover {
+	background-color: var(--primary-color); /* Cor de fundo ao passar o mouse */
+  }
+  
+
+  /* Rodapé da tabela */
+  tfoot td {
+	padding: 6px; /* Espaçamento interno do rodapé */
+	text-align: center; /* Alinhamento do texto no centro */
+	background-color: var(--background-color); /* Cor de fundo do rodapé */
+	font-weight: bold; /* Negrito no rodapé */
+  }
+  
+  /* Aumentar a largura da tabela em dispositivos menores */
+  @media (max-width: 768px) {
+	table {
+	  font-size: 14px;
+	}
+  }
+  

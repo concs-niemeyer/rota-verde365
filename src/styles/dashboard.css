@@ -1,0 +1,48 @@
+.container-dashboard {
+	display: flex;
+	width: 100vw;
+}
+
+.aside{
+	height: 100%;
+	display: flex;
+	color: var(--background-color);
+	background-color: var(--secondary-color);
+}
+
+.logotipo-aside{
+	margin-top: 16px;
+}
+
+.nav-aside{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	height: 100%;
+}
+.navBottom{
+	height: 100%;
+}
+
+.content-dashboard{
+	height: 100%;
+	width: 100%;
+	padding-left: 4px;
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+.card-dashboard {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.ul-aside-dashboard{
+	margin-top: 12rem;
+	height: 100vh;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+}

@@ -1,0 +1,14 @@
+.form-cadastrar-local {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+.btn-cadastrar-local {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.mapa-cadastrar-local{
+	width: 100%;
+}
