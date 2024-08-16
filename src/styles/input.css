@@ -18,6 +18,7 @@
 }
 
 .input-container {
+	height: fit-content;
 	margin-left: 10px;
 	padding: 8px;
 	font-size: 12px;
