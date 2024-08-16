@@ -6,10 +6,7 @@
 	height: 100vh; /* Ajusta a altura para cobrir a viewport */
 	background-color: var(--neutral-color);
 }
-}
-  
-.hero-sign-in {
-	width: 100%;
+ 
 .hero-sign-in {
 	display: flex;
 	background-image: url("/src/assets/pictures/background-rotaverde.jpg");
@@ -46,7 +43,6 @@
 	margin-top: 0.25rem;
 }
   
-
 .error-message {
 	color: red;
 	font-size: 0.875rem;
@@ -58,6 +54,7 @@
 	flex-direction: column;
 	gap: 4px;
 }
+
 .content-sign-in {					
 	display: flex;
 	flex-direction: column;
@@ -84,7 +81,7 @@
 .animated {
     position: relative;
     font-family: sans-serif;
-    font-size: 2em;
+    font-size: 4em;
     letter-spacing: 4px;
     text-transform: uppercase;
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--text-color));
