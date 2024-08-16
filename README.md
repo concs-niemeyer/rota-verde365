@@ -1,6 +1,6 @@
 # Rotaverde365
 
-Rotaverde365 é uma aplicação para registrar e gerenciar os locais que você visitou, como trilhas, passeios, praias, e outros pontos de interesse. Organize suas aventuras e mantenha um histórico das suas explorações.
+Rotaverde365 é uma aplicação para registrar e gerenciar os locais que você visitou, como trilhas, passeios, praias e outros pontos de interesse. Organize suas aventuras e mantenha um histórico das suas explorações.
 
 ## Funcionalidades
 
@@ -50,6 +50,14 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
 - **`npm run lint`**: Executa a análise de código com ESLint.
 - **`npm run preview`**: Visualiza a versão de produção localmente.
 - **`npm run server`**: Inicia um servidor JSON local para simular uma API.
+
+## Capturas de Tela
+
+Veja abaixo duas capturas de tela da aplicação:
+
+![Tela de Login](src/assets/pictures/login_rotaverde365_v0.1.png)
+
+![Tela de Dashboard](src/assets/pictures/dashboard_rotaverde365_v0.1.png)
 
 ---
 
