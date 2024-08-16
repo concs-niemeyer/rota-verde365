@@ -94,7 +94,7 @@ export function CadastrarLocal() {
 	  // Estruturando o objeto no formato esperado
 	  const localData = {
 		nome: data.nome,
-		identificador_do_usuario: "USR008", // Aqui você deve definir como obter o identificador do usuário, se aplicável
+		identificador_do_usuario: "USR008", // Definir como obter o identificador do usuário, se aplicável
 		descricao: data.descricao,
 		localizacao: {
 		  cep: data.cep,
@@ -196,7 +196,7 @@ export function CadastrarLocal() {
             )}
           />
           <Controller
-            name="estado"
+            name="cidade"
             control={control}
             render={({ field }) => (
               <div className="input-container">
@@ -243,7 +243,7 @@ export function CadastrarLocal() {
             </Button>
 
             <Button type="submit">Cadastrar</Button>
-            <Button className="" onClick={() => navigate("/dashboard")}>Voltar</Button>
+            <Button variant="secondary" onClick={() => navigate("/dashboard")}>Voltar</Button>
           </div>
         </div>
       </form>
