@@ -101,12 +101,11 @@ export function CadastrarLocal() {
 		  logadouro: data.endereco,
 		  bairro: data.bairro, // Certifique-se de adicionar este campo ao seu formulário, se necessário
 		  cidade: data.cidade,
-		  estado: data.estado, // Você pode precisar atualizar o campo 'estado' com o valor da UF
+		  estado: data.estado, // 'estado' === UF
 		  latitude,
 		  longitude,
 		},
-		praticas_esportivas: [], // Adicione aqui as práticas esportivas se for aplicável
-		id: data.id || "", // Adapte conforme necessário
+		id: data.id || "", 
 	  };
   
 	  const response = await fetch("http://localhost:3333/locais", {
@@ -196,7 +195,7 @@ export function CadastrarLocal() {
             )}
           />
           <Controller
-            name="cidade"
+            name="estado"
             control={control}
             render={({ field }) => (
               <div className="input-container">
@@ -212,7 +211,7 @@ export function CadastrarLocal() {
               </div>
             )}
           />
-          {errors.cidade && <p className="error-message">{errors.cidade.message}</p>}
+          {errors.estado && <p className="error-message">{errors.estado.message}</p>}
 
           <Controller
             name="complemento"
