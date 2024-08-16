@@ -94,19 +94,18 @@ export function CadastrarLocal() {
 	  // Estruturando o objeto no formato esperado
 	  const localData = {
 		nome: data.nome,
-		identificador_do_usuario: "USR008", // Aqui você deve definir como obter o identificador do usuário, se aplicável
+		identificador_do_usuario: "USR008", // Definir como obter o identificador do usuário, se aplicável
 		descricao: data.descricao,
 		localizacao: {
 		  cep: data.cep,
 		  logadouro: data.endereco,
 		  bairro: data.bairro, // Certifique-se de adicionar este campo ao seu formulário, se necessário
 		  cidade: data.cidade,
-		  estado: data.estado, // Você pode precisar atualizar o campo 'estado' com o valor da UF
+		  estado: data.estado, // 'estado' === UF
 		  latitude,
 		  longitude,
 		},
-		praticas_esportivas: [], // Adicione aqui as práticas esportivas se for aplicável
-		id: data.id || "", // Adapte conforme necessário
+		id: data.id || "", 
 	  };
   
 	  const response = await fetch("http://localhost:3333/locais", {
@@ -212,7 +211,7 @@ export function CadastrarLocal() {
               </div>
             )}
           />
-          {errors.cidade && <p className="error-message">{errors.cidade.message}</p>}
+          {errors.estado && <p className="error-message">{errors.estado.message}</p>}
 
           <Controller
             name="complemento"
@@ -243,7 +242,7 @@ export function CadastrarLocal() {
             </Button>
 
             <Button type="submit">Cadastrar</Button>
-            <Button className="" onClick={() => navigate("/dashboard")}>Voltar</Button>
+            <Button variant="secondary" onClick={() => navigate("/dashboard")}>Voltar</Button>
           </div>
         </div>
       </form>

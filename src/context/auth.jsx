@@ -20,12 +20,15 @@ export function AuthProvider({ children }) {
 
   async function signIn({ email, password }) {
     try {
-      const response = await api(`/users?email=${email}&senha=${password}`);
+      const response = await api(`/users?email=${email}`);
       const data = await response.json();
 
-      if (data.length > 0) {
-        setUser(data);
-        localStorage.setItem("@rotaverde365:user", JSON.stringify(data));
+      // Verifica se algum usuário foi retornado e se a senha corresponde
+      const user = data.find(user => user.email === email && user.senha === password);
+
+      if (user) {
+        setUser(user);
+        localStorage.setItem("@rotaverde365:user", JSON.stringify(user));
         return true;
       } else {
         return false;
@@ -48,7 +51,7 @@ export function AuthProvider({ children }) {
       
       if (response.ok) {
         const data = await response.json();
-        return data.sucess || true;
+        return data.success || true; // Corrigido de `data.sucess` para `data.success`
       } else {
         const errorData = await response.json();
         console.error("Erro ao cadastrar:", errorData);

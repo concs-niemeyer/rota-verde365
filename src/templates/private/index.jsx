@@ -1,5 +1,5 @@
 import { Navigate, NavLink, Outlet } from "react-router-dom";
-import { Home, MapPinned, UserRound, LogOut } from "lucide-react";
+import { Home, MapPinned, LogOut } from "lucide-react";
 import { useAuth } from "../../context/auth"; // Ajuste o caminho conforme necessário
 import "../../styles/dashboard.css";
 import { Logotipo } from "../../components/atoms/logotipo/index.jsx";

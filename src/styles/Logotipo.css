@@ -1,6 +1,6 @@
 .logotipo {
-	height: 8rem;
-	width: 8rem; /* Adiciona a largura para garantir a visibilidade */
+	height: 64px;
+	width: 64px; /* Adiciona a largura para garantir a visibilidade */
 	transform: rotate(30deg);
 	border-radius: 0 350px 0px 650px;
 	border: 2px solid var(--neutral-color);
@@ -10,16 +10,15 @@
 	background-size: cover; /* Ajusta a imagem de fundo */
 	background-position: center; /* Posiciona a imagem no centro */
   }
-  
-  .shake {
-	animation: shake 0.5s ease;
+
+.hiThere {
+	animation: hiThere 1s ease infinite;
   }
-  
-  @keyframes shake {
-	0% { transform: rotate(30deg) translateX(0); }
-	25% { transform: rotate(30deg) translateX(-10px); }
-	50% { transform: rotate(30deg) translateX(10px); }
-	75% { transform: rotate(30deg) translateX(-10px); }
-	100% { transform: rotate(30deg) translateX(0); }
-  }
-  
+
+@keyframes hiThere {
+	30% { transform: scale(1.2); }
+	40%, 60% { transform: rotate(-20deg) scale(1.2); }
+	50% { transform: rotate(20deg) scale(1.2); }
+	70% { transform: rotate(0deg) scale(1.2); }
+	100% { transform: scale(1); }
+}

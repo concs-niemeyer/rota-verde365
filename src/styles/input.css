@@ -1,5 +1,7 @@
 /* Ajuste para a classe que pode receber foco, como um input ou textarea */
 .content-input {
+	display: flex;
+	flex-direction: column;
 	padding-right: 10px;
 	color: var(--text-color);
 	background-color: transparent;

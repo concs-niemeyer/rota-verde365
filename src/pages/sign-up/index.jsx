@@ -21,13 +21,7 @@ const schema = yup.object().shape({
     .string()
     .min(6, "Senha deve ter pelo menos 6 caracteres")
     .required("Senha é obrigatória"),
-  data_nascimento: yup.date(),
-  endereco: yup.object().shape({
-    cep: yup.string().matches(/^\d{5}-?\d{3}$/, "CEP inválido. Ex: 12345-678"),
-    logradouro: yup.string(),
-    numero: yup.string(),
-    complemento: yup.string(),
-  }),
+  data_nascimento: yup.date().nullable(),
 });
 
 export function SignUp() {
@@ -37,15 +31,36 @@ export function SignUp() {
   const {
     control,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
+  async function checkCpfExists(cpf) {
+    try {
+      const response = await fetch("http://localhost:3333/users");
+      const users = await response.json();
+      return users.some(user => user.cpf === cpf);
+    } catch (error) {
+      console.error("Erro ao verificar CPF:", error);
+      alert("Ocorreu um erro ao verificar o CPF.");
+      return false;
+    }
+  }
+
   async function onSubmit(data) {
     try {
-      const isSuccess = await signUp(data);
+      const cpfExists = await checkCpfExists(data.cpf);
+      if (cpfExists) {
+        setError("cpf", {
+          type: "manual",
+          message: "CPF já está registrado.",
+        });
+        return;
+      }
 
+      const isSuccess = await signUp(data);
       if (isSuccess) {
         navigate("/dashboard");
       } else {
@@ -143,77 +158,10 @@ export function SignUp() {
             <p className="error-message">{errors.senha.message}</p>
           )}
 
-          <Controller
-            name="endereco.cep"
-            control={control}
-            render={({ field }) => (
-              <Input
-                label="CEP"
-                className="div6 input-container"
-                placeholder="CEP"
-                {...field}
-              />
-            )}
-          />
-          {errors.endereco?.cep && (
-            <p className="error-message">{errors.endereco.cep.message}</p>
-          )}
-
-          <Controller
-            name="endereco.logradouro"
-            control={control}
-            render={({ field }) => (
-              <Input
-                label="Endereço"
-                className="div7 input-container"
-                placeholder="Endereço"
-                {...field}
-              />
-            )}
-          />
-          {errors.endereco?.logradouro && (
-            <p className="error-message">
-              {errors.endereco.logradouro.message}
-            </p>
-          )}
-
-          <Controller
-            name="endereco.numero"
-            control={control}
-            render={({ field }) => (
-              <Input
-                label="Número"
-                className="div8 input-container"
-                placeholder="Número"
-                {...field}
-              />
-            )}
-          />
-          {errors.endereco?.numero && (
-            <p className="error-message">{errors.endereco.numero.message}</p>
-          )}
-
-          <Controller
-            name="endereco.complemento"
-            control={control}
-            render={({ field }) => (
-              <Input
-                label="Complemento"
-                className="div9 input-container"
-                placeholder="Complemento"
-                {...field}
-              />
-            )}
-          />
-          {errors.endereco?.complemento && (
-            <p className="error-message">
-              {errors.endereco.complemento.message}
-            </p>
-          )}
           <div className="btn-sign-up">
             <Button type="submit">Cadastrar</Button>
             <Link to="/">
-              <Button className="btn-voltar">Voltar ao Login</Button>
+              <Button variant="secondary">Voltar ao Login</Button>
             </Link>
           </div>
         </form>
