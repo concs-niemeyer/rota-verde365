@@ -34,23 +34,21 @@ export function SignIn() {
     <>
       <div className="container-sign-in">
         <div className="hero-sign-in">
-          <div className="logotipo-sign-in">
-            <Logotipo />
-          </div>
-          <div className="text-animated">
-            <p className="animated">ROTAVERDE</p>
-          </div>
+			<div className="logotipo-sign-in">
+			<Logotipo></Logotipo>
+			</div>
+          <h2 className="h2-sign-in">
+            Salve todos os seus locais visitados com o
+          </h2>
+          <AnimatedSpan></AnimatedSpan>
         </div>
         <div className="content-sign-in">
           <div>
             <h1 className="h1-sign-in">Faça seu login / cadastro</h1>
-            <h2 className="h2-sign-in">
-              E salve todos os seus locais visitados
-            </h2>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-		  <div className="input-sign-in">
-			<Input
+          <form className="form-sign-in" onSubmit={handleSubmit(onSubmit)}>
+            <Input
+              className="form-input"
               label="Digite seu email:"
               placeholder="Email"
               type="email"
@@ -66,15 +64,13 @@ export function SignIn() {
               type="password"
               {...register("password", { required: "A senha é obrigatória" })}
             />
-            {errors.password && (
-              <p className="error-message">{errors.password.message}</p>
-            )}
-            
-              <Button type="submit">Entrar</Button>
-              <Link to="/cadastrar">
-                <Button variant="secondary">Cadastre-se</Button>
-              </Link>
-            </div>
+            <Button className="btn-sign-in" type="submit">
+              Entrar
+            </Button>
+
+            <Link to="/cadastrar">
+              <Button className="btn-cadastrar">Cadastre-se</Button>
+            </Link>
           </form>
         </div>
       </div>

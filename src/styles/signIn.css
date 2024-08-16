@@ -6,7 +6,10 @@
 	height: 100vh; /* Ajusta a altura para cobrir a viewport */
 	background-color: var(--neutral-color);
 }
+}
   
+.hero-sign-in {
+	width: 100%;
 .hero-sign-in {
 	display: flex;
 	background-image: url("/src/assets/pictures/background-rotaverde.jpg");
@@ -32,9 +35,17 @@
 .h2-sign-in {
 	display: flex;
 	color: var(--secondary-color);
+	color: var(--secondary-color);
 	text-transform: uppercase;
 	text-align: center;
 }
+
+.error-message {
+	color: red;
+	font-size: 0.875rem;
+	margin-top: 0.25rem;
+}
+  
 
 .error-message {
 	color: red;
