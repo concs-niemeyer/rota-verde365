@@ -19,6 +19,21 @@
 	justify-content: center;
 }
 
+.content-sign-in {					
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	max-width: 400px;
+	width: 100%;
+	background: var(--background-color);
+	padding: 0 24px 0 24px;
+	box-shadow: 6px 0 4px 0 var(--secondary-color) inset;
+	border-radius: 8px; /* Adiciona bordas arredondadas para o container */
+}
+
+
 .h1-sign-in {
 	text-align: center;
 	color: var(--text-color);
@@ -36,13 +51,7 @@
 	text-transform: uppercase;
 	text-align: center;
 }
-
-.error-message {
-	color: red;
-	font-size: 0.875rem;
-	margin-top: 0.25rem;
-}
-  
+ 
 .error-message {
 	color: red;
 	font-size: 0.875rem;
@@ -55,23 +64,8 @@
 	gap: 4px;
 }
 
-.content-sign-in {					
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	max-width: 400px;
-	width: 100%;
-	background: var(--background-color);
-	padding: 0 24px 0 24px;
-	box-shadow: 6px 0 4px 0 var(--secondary-color) inset;
-	border-radius: 8px; /* Adiciona bordas arredondadas para o container */
-}
-
 .text-animated {
     background: transparent;
-	font-size: 2em;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -81,7 +75,7 @@
 .animated {
     position: relative;
     font-family: sans-serif;
-    font-size: 4em;
+    font-size: 2rem;
     letter-spacing: 4px;
     text-transform: uppercase;
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--text-color));
