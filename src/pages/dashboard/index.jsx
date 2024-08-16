@@ -105,14 +105,14 @@ export function Dashboard() {
             <TableHeader>
               <TableRow>
                 <TableHead>Local</TableHead>
-                <TableHead>Usuário</TableHead>
+                <TableHead>UF</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {locais.map((local) => (
                 <TableRow key={local.id}>
                   <TableCell>{local.nome}</TableCell>
-                  <TableCell>{local.identificador_do_usuario}</TableCell>
+                  <TableCell>{local.localizacao.estado}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

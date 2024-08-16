@@ -3,17 +3,17 @@
 	width: 64px; /* Adiciona a largura para garantir a visibilidade */
 	transform: rotate(30deg);
 	border-radius: 0 350px 0px 650px;
-	border: 2px solid var(--neutral-color);
+	border: 2px solid var(--primary-color);
 	position: absolute;
 	transition: transform 0.3s;
 	background-image: url('/src/assets/pictures/logotipo-rotaverde.jpg');
 	background-size: cover; /* Ajusta a imagem de fundo */
 	background-position: center; /* Posiciona a imagem no centro */
-  }
+}
 
 .hiThere {
 	animation: hiThere 1s ease infinite;
-  }
+}
 
 @keyframes hiThere {
 	30% { transform: scale(1.2); }

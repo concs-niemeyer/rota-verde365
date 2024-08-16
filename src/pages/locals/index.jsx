@@ -55,7 +55,6 @@ export function Locais() {
             <TableRow>
               <TableHead>Local</TableHead>
               <TableHead>Descrição</TableHead>
-              <TableHead>Usuário</TableHead>
               <TableHead>UF</TableHead>
             </TableRow>
           </TableHeader>
@@ -64,7 +63,6 @@ export function Locais() {
               <TableRow key={local.id}>
                 <TableCell>{local.nome}</TableCell>
                 <TableCell>{local.descricao}</TableCell>
-                <TableCell>{local.identificador_do_usuario}</TableCell>
                 <TableCell>{local.localizacao.estado}</TableCell>
               </TableRow>
             ))}
