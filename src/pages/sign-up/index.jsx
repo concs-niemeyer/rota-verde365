@@ -4,6 +4,7 @@ import Input from "../../components/atoms/input";
 import "../../styles/signUp.css";
 import { useAuth } from "../../context/auth";
 import { useForm, Controller } from "react-hook-form";
+import { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Logotipo } from "../../components/atoms/logotipo";
@@ -19,7 +20,8 @@ const schema = yup.object().shape({
   email: yup.string().email("Email inválido").required("Email é obrigatório"),
   senha: yup
     .string()
-    .min(6, "Senha deve ter pelo menos 6 caracteres")
+    .min(8, "Senha deve ter pelo menos 8 caracteres")
+    .max(64, "Senha deve ter no máximo 32 caracteres")
     .required("Senha é obrigatória"),
   data_nascimento: yup.date().nullable(),
 });
@@ -27,6 +29,9 @@ const schema = yup.object().shape({
 export function SignUp() {
   const { signUp } = useAuth();
   const navigate = useNavigate();
+
+  const [passwordStrength, setPasswordStrength] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
 
   const {
     control,
@@ -37,11 +42,25 @@ export function SignUp() {
     resolver: yupResolver(schema),
   });
 
+  function getPasswordStrength(password) {
+    const hasLetters = /[a-zA-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasEspecialChar = /[!@#$%^&*]/.test(password);
+
+    if ((hasLetters && hasNumber && hasEspecialChar) || length > 11) {
+      return "forte";
+    } else if (hasLetters && hasNumber) {
+      return "média";
+    } else {
+      return "fraca";
+    }
+  }
+
   async function checkCpfExists(cpf) {
     try {
       const response = await fetch("http://localhost:3333/users");
       const users = await response.json();
-      return users.some(user => user.cpf === cpf);
+      return users.some((user) => user.cpf === cpf);
     } catch (error) {
       console.error("Erro ao verificar CPF:", error);
       alert("Ocorreu um erro ao verificar o CPF.");
@@ -140,23 +159,40 @@ export function SignUp() {
           {errors.email && (
             <p className="error-message">{errors.email.message}</p>
           )}
-
           <Controller
             name="senha"
             control={control}
             render={({ field }) => (
-              <Input
-                label="Senha"
-                className="div5 input-container"
-                placeholder="Senha"
-                type="password"
-                {...field}
-              />
+              <>
+                <Input
+                  label="Senha"
+                  className="div5 input-container"
+                  placeholder="Senha"
+                  type="password"
+                  {...field}
+                  onChange={(e) => {
+                    field.onChange(e);
+                    setPasswordValue(e.target.value);
+                    setPasswordStrength(getPasswordStrength(e.target.value));
+                  }}
+                />
+                {passwordValue && (
+                  <p
+                    style={{
+                      color:
+                        passwordStrength === "forte"
+                          ? "green"
+                          : passwordStrength === "média"
+                          ? "orange"
+                          : "red",
+                    }}
+                  >
+                    Senha {passwordStrength}
+                  </p>
+                )}
+              </>
             )}
           />
-          {errors.senha && (
-            <p className="error-message">{errors.senha.message}</p>
-          )}
 
           <div className="btn-sign-up">
             <Button type="submit">Cadastrar</Button>
@@ -165,9 +201,6 @@ export function SignUp() {
             </Link>
           </div>
         </form>
-      </div>
-      <div className="hero-sign-up">
-        <Logotipo />
       </div>
     </div>
   );

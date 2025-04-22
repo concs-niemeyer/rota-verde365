@@ -1,45 +1,46 @@
 /* Container principal do componente SignUp */
 .container-sign-up {
-	display: flex;
-	width: 100%;
-	height: 100vh;
-	background-color: var(--background-color);
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/src/assets/pictures/background-rotaverde.jpg");
+  background-size: cover;
 }
 
-.hero-sign-up {
-	background-image: url('/src/assets/pictures/background-rotaverde.jpg');
-	background-position: 50%;
-	background-size: cover;
+/* .hero-sign-up {
+	background-position: 100%;
 	display: flex;
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-}
+	opacity: 0.3;
+	} */
 
 .content-sign-up {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	height: 100%;
-	background:  var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 .h1-sign-up {
-	font-size: 28px;
-	text-align: center;
-	color: var(--text-color);
-	margin-bottom: 10px;
+  font-size: 28px;
+  text-align: center;
+  color: var(--background-color);
+  margin-bottom: 10px;
 }
 
-.form-sign-up{
-	display: flex;
-	flex-wrap: wrap;
-	gap: 6px;
-	justify-content: center;
+.form-sign-up {
+  background-color: var(--background-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  border-style: groove;
 }
 
-.btn-sign-up{
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
+.btn-sign-up {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
 }
