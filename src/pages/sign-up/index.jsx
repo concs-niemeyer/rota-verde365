@@ -4,10 +4,10 @@ import Input from "../../components/atoms/input";
 import "../../styles/signUp.css";
 import { useAuth } from "../../context/auth";
 import { useForm, Controller } from "react-hook-form";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Logotipo } from "../../components/atoms/logotipo";
+import  ReCAPTCHA from "react-google-recaptcha";
 
 // Definindo o esquema de validação com Yup
 const schema = yup.object().shape({
@@ -27,6 +27,7 @@ const schema = yup.object().shape({
 });
 
 export function SignUp() {
+  const recaptcha = useRef(null);
   const { signUp } = useAuth();
   const navigate = useNavigate();
 
@@ -69,6 +70,13 @@ export function SignUp() {
   }
 
   async function onSubmit(data) {
+    const captchaValue = recaptcha.current?.getValue();
+  
+    if (!captchaValue) {
+      alert("Por favor, confirme que você não é um robô.");
+      return;
+    }
+  
     try {
       const cpfExists = await checkCpfExists(data.cpf);
       if (cpfExists) {
@@ -78,8 +86,10 @@ export function SignUp() {
         });
         return;
       }
-
-      const isSuccess = await signUp(data);
+  
+      // Enviando captchaValue junto se precisar validar no backend
+      const isSuccess = await signUp({ ...data, captchaValue });
+  
       if (isSuccess) {
         navigate("/dashboard");
       } else {
@@ -88,8 +98,12 @@ export function SignUp() {
     } catch (error) {
       console.error("Erro ao cadastrar usuário:", error);
       alert("Ocorreu um erro ao tentar cadastrar o usuário.");
+    } finally {
+      // limpa o captcha após o envio
+      recaptcha.current?.reset();
     }
   }
+  
 
   return (
     <div className="container-sign-up">
@@ -193,7 +207,7 @@ export function SignUp() {
               </>
             )}
           />
-
+          <ReCAPTCHA sitekey={import.meta.env.VITE_SITE_KEY} ref={recaptcha} />
           <div className="btn-sign-up">
             <Button type="submit">Cadastrar</Button>
             <Link to="/">
