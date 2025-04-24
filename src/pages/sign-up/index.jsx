@@ -48,7 +48,7 @@ export function SignUp() {
     const hasNumber = /\d/.test(password);
     const hasEspecialChar = /[!@#$%^&*]/.test(password);
 
-    if ((hasLetters && hasNumber && hasEspecialChar) || length > 11) {
+    if ((hasLetters && hasNumber && hasEspecialChar) || password.length > 11) {
       return "forte";
     } else if (hasLetters && hasNumber) {
       return "média";
@@ -70,6 +70,7 @@ export function SignUp() {
   }
 
   async function onSubmit(data) {
+    console.log("Clickou!")
     const captchaValue = recaptcha.current?.getValue();
   
     if (!captchaValue) {
