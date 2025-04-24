@@ -108,7 +108,7 @@ export function CadastrarLocal() {
 		id: data.id || "", 
 	  };
   
-	  const response = await fetch("http://localhost:3333/locais", {
+	  const response = await fetch("https://natureza365-3teb.onrender.com/locais", {
 		method: "POST",
 		headers: {
 		  "Content-Type": "application/json",
