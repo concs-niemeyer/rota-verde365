@@ -23,6 +23,7 @@ export function AuthProvider({ children }) {
       const response = await api(`/user?email=${email}`);
       console.log(response, "<<<RESPOSTA API>>>")
       const data = await response.json();
+      console.log(data, "<<<DATA API>>>")
 
       // Verifica se algum usuário foi retornado e se a senha corresponde
       const user = data.find(user => user.email === email && user.senha === password);
