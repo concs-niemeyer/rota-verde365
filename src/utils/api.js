@@ -6,7 +6,7 @@
  */
 
 export function api( endpoint, init ) {
-	const url = `http://localhost:3333` + endpoint
+	const url = `https://natureza365-3teb.onrender.com` + endpoint
 
 	return fetch(url, init)
 }
