@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
 
   async function signIn({ email, password }) {
     try {
-      const response = await api(`/users?email=${email}`);
+      const response = await api(`/user?email=${email}`);
       const data = await response.json();
 
       // Verifica se algum usuário foi retornado e se a senha corresponde
