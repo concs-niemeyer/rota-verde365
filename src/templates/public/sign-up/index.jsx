@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../components/atoms/button";
 import Input from "../../../components/atoms/input";
-import "../../../styles/signUp";
+import "../../../styles/signUp.css";
 import { useAuth } from "../../../context/auth";
 import { useForm, Controller } from "react-hook-form";
 import { useState, useRef } from "react";
