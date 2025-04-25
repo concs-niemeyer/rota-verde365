@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { SignIn } from "../pages/sign-in/index.jsx";
-import { SignUp } from "../pages/sign-up/index.jsx";
+import { SignUp } from "../templates/public/sign-up/index.jsx";
 import { PrivateRouteLayout } from "../templates/private/index.jsx";
 import { Locais } from "../pages/locals/index.jsx";
 import { Dashboard } from "../pages/dashboard/index.jsx"; 

@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../../components/atoms/button";
-import Input from "../../components/atoms/input";
+import Button from "../../../components/atoms/button";
+import Input from "../../../components/atoms/input";
 import "../../styles/signUp.css";
-import { useAuth } from "../../context/auth";
+import { useAuth } from "../../../context/auth";
 import { useForm, Controller } from "react-hook-form";
 import { useState, useRef } from "react";
 import * as yup from "yup";
@@ -59,7 +59,7 @@ export function SignUp() {
 
   async function checkCpfExists(cpf) {
     try {
-      const response = await fetch("https://natureza365-3teb.onrender.com/users");
+      const response = await fetch("https://natureza365-3teb.onrender.com/user");
       const users = await response.json();
       return users.some((user) => user.cpf === cpf);
     } catch (error) {
