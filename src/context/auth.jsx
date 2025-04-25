@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
 
   async function signUp(userData) {
     try {
-      const response = await api("/users", {
+      const response = await api("/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
