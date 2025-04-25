@@ -20,19 +20,21 @@ export function AuthProvider({ children }) {
 
   async function signIn({ email, password }) {
     try {
-      const response = await api(`/user?email=${email}`);
-      console.log(response, "<<<RESPOSTA API>>>")
-      const data = await response.json();
-      console.log(data, "<<<DATA API>>>")
-
-      // Verifica se algum usuário foi retornado e se a senha corresponde
-      const user = data.find(user => user.email === email && user.senha === password);
-
-      if (user) {
+      const response = await api("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      console.log(response, "<<<RESPOSTA>>>")
+      if (response.ok) {
+        const user = await response.json();
         setUser(user);
         localStorage.setItem("@rotaverde365:user", JSON.stringify(user));
         return true;
       } else {
+        console.error("Erro ao fazer login:", await response.text());
         return false;
       }
     } catch (error) {
@@ -50,7 +52,7 @@ export function AuthProvider({ children }) {
         },
         body: JSON.stringify(userData),
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         return data.success || true; // Corrigido de `data.sucess` para `data.success`
