@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
         },
         body: JSON.stringify({ email, password }),
       });
-      console.log(response, "<<<RESPOSTA>>>")
+      console.log(body, "<<<RESPOSTA>>>")
       if (response.ok) {
         const user = await response.json();
         setUser(user);
