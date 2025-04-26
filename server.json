@@ -1,137 +1,314 @@
 {
-	"users": [
-	  {
-		"nome": "Bruno Martins",
-		"sexo": "Masculino",
-		"cpf": "11122233344",
-		"data_nascimento": "1991-06-20",
-		"email": "martins@example.com",
-		"senha": "123",
-		"id": "1"
-	  },
-	  {
-		"nome": "Fernanda Rocha",
-		"sexo": "Feminino",
-		"cpf": "55566677788",
-		"data_nascimento": "1989-04-12",
-		"email": "fernanda.rocha@example.com",
-		"senha": "1234abcd",
-		"id": "2"
-	  },
-	  {
-		"nome": "Ricardo Pereira",
-		"sexo": "Masculino",
-		"cpf": "99900011122",
-		"data_nascimento": "1993-10-05",
-		"email": "ricardo.pereira@example.com",
-		"senha": "abcd1234",
-		"id": "3"
-	  }
-	],
-	"locals": [
-	  {
-		"id": "1",
-		"name": "Praia do Rosa",
-		"address": "Imbituba, SC",
-		"cep": "88780-000",
-		"userId": "u1",
-		"lat": "-28.12345",
-		"lon": "-48.65432"
-	  },
-	  {
-		"id": "2",
-		"name": "Parque Ibirapuera",
-		"address": "São Paulo, SP",
-		"cep": "04094-050",
-		"userId": "u2",
-		"lat": "-23.58741",
-		"lon": "-46.65763"
-	  },
-	  {
-		"id": "3",
-		"name": "Chapada Diamantina",
-		"address": "Bahia, BA",
-		"cep": "46740-000",
-		"userId": "3",
-		"lat": "-12.46916",
-		"lon": "-41.41977"
-	  },
-	  {
-		"id": "4",
-		"name": "Cataratas do Iguaçu",
-		"address": "Foz do Iguaçu, PR",
-		"cep": "85855-750",
-		"userId": "1",
-		"lat": "-25.69530",
-		"lon": "-54.43667"
-	  },
-	  {
-		"id": "5",
-		"name": "Parque Nacional de Brasília",
-		"address": "Brasília, DF",
-		"cep": "70835-000",
-		"userId": "2",
-		"lat": "-15.72198",
-		"lon": "-47.96535"
-	  }
-	],
-	"descriptions": [
-	  {
-		"id": "1",
-		"userId": "1",
-		"local_id": "l",
-		"data_visita": "2024-02-10",
-		"desc_fauna": "Avistados golfinhos e tartarugas.",
-		"desc_flora": "Vegetação nativa preservada."
-	  },
-	  {
-		"id": "2",
-		"userId": "2",
-		"local_id": "2",
-		"data_visita": "2024-03-15",
-		"desc_fauna": "Diversidade de aves urbanas.",
-		"desc_flora": "Área verde ampla e bem cuidada."
-	  },
-	  {
-		"id": "3",
-		"userId": "3",
-		"local_id": "3",
-		"data_visita": "2024-04-05",
-		"desc_fauna": "Tatus, veados e diversas aves.",
-		"desc_flora": "Vegetação típica do cerrado."
-	  },
-	  {
-		"id": "4",
-		"userId": "1",
-		"local_id": "4",
-		"data_visita": "2024-05-01",
-		"desc_fauna": "Macacos e quatis visíveis.",
-		"desc_flora": "Floresta densa e úmida."
-	  },
-	  {
-		"id": "5",
-		"userId": "2",
-		"local_id": "5",
-		"data_visita": "2024-06-10",
-		"desc_fauna": "Animais típicos do cerrado observados.",
-		"desc_flora": "Cerrado preservado e trilhas naturais."
-	  },
-	  {
+  "users": [
+    {
+      "nome": "Bruno Martins",
+      "sexo": "Masculino",
+      "cpf": "11122233344",
+      "data_nascimento": "1991-06-20",
+      "email": "martins@example.com",
+      "password": "123",
+      "id": "1"
+    },
+    {
+      "nome": "Fernanda Rocha",
+      "sexo": "Feminino",
+      "cpf": "55566677788",
+      "data_nascimento": "1989-04-12",
+      "email": "fernanda.rocha@example.com",
+      "password": "1234abcd",
+      "id": "2"
+    },
+    {
+      "nome": "Ricardo Pereira",
+      "sexo": "Masculino",
+      "cpf": "99900011122",
+      "data_nascimento": "1993-10-05",
+      "email": "ricardo.pereira@example.com",
+      "password": "abcd1234",
+      "id": "3"
+    }
+  ],
+  "locals": [
+    {
+      "id": "1",
+      "name": "Praia do Rosa",
+      "address": "Imbituba, SC",
+      "cep": "88780-000",
+      "userId": "u1",
+      "lat": "-28.12345",
+      "lon": "-48.65432"
+    },
+    {
+      "id": "2",
+      "name": "Parque Ibirapuera",
+      "address": "São Paulo, SP",
+      "cep": "04094-050",
+      "userId": "u2",
+      "lat": "-23.58741",
+      "lon": "-46.65763"
+    },
+    {
+      "id": "3",
+      "name": "Chapada Diamantina",
+      "address": "Bahia, BA",
+      "cep": "46740-000",
+      "userId": "3",
+      "lat": "-12.46916",
+      "lon": "-41.41977"
+    },
+    {
+      "id": "4",
+      "name": "Cataratas do Iguaçu",
+      "address": "Foz do Iguaçu, PR",
+      "cep": "85855-750",
+      "userId": "1",
+      "lat": "-25.69530",
+      "lon": "-54.43667"
+    },
+    {
+      "id": "5",
+      "name": "Parque Nacional de Brasília",
+      "address": "Brasília, DF",
+      "cep": "70835-000",
+      "userId": "2",
+      "lat": "-15.72198",
+      "lon": "-47.96535"
+    }
+  ],
+  "descriptions": [
+    {
+      "id": "1",
+      "userId": "1",
+      "local_id": "l",
+      "data_visita": "2024-02-10",
+      "desc_fauna": "Avistados golfinhos e tartarugas.",
+      "desc_flora": "Vegetação nativa preservada."
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "local_id": "2",
+      "data_visita": "2024-03-15",
+      "desc_fauna": "Diversidade de aves urbanas.",
+      "desc_flora": "Área verde ampla e bem cuidada."
+    },
+    {
+      "id": "3",
+      "userId": "3",
+      "local_id": "3",
+      "data_visita": "2024-04-05",
+      "desc_fauna": "Tatus, veados e diversas aves.",
+      "desc_flora": "Vegetação típica do cerrado."
+    },
+    {
+      "id": "4",
+      "userId": "1",
+      "local_id": "4",
+      "data_visita": "2024-05-01",
+      "desc_fauna": "Macacos e quatis visíveis.",
+      "desc_flora": "Floresta densa e úmida."
+    },
+    {
+      "id": "5",
+      "userId": "2",
+      "local_id": "5",
+      "data_visita": "2024-06-10",
+      "desc_fauna": "Animais típicos do cerrado observados.",
+      "desc_flora": "Cerrado preservado e trilhas naturais."
+    },
+    {
+      "id": "6",
+      "userId": "1",
+      "local_id": "2",
+      "data_visita": "2024-07-20",
+      "desc_fauna": "Sabiás e maritacas no final da tarde.",
+      "desc_flora": "Árvores frutíferas e vegetação diversificada."
+    },
+    {
+      "id": "7",
+      "userId": "3",
+      "local_id": "1",
+      "data_visita": "2024-08-18",
+      "desc_fauna": "Golfinhos avistados na enseada.",
+      "desc_flora": "Muitas bromélias e orquídeas nativas."
+    }
+  ],
+  "userRoles": [
+    {
+      "id": "1",
+      "userId": "1",
+      "roleId": "1"
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "roleId": "2"
+    },
+    {
+      "id": "3",
+      "userId": "3",
+      "roleId": "3"
+    }
+  ],
+  "roles": [
+    {
+      "id": "1",
+      "description": "admin"
+    },
+    {
+      "id": "2",
+      "description": "user"
+    },
+    {
+      "id": "3",
+      "description": "guest"
+    }
+  ],
+  "permissions": [
+    {
+      "id": "1",
+      "description": "criar_usuario"
+    },
+    {
+      "id": "2",
+      "description": "criar_local"
+    },
+    {
+      "id": "3",
+      "description": "remover_usuario"
+    },
+    {
+      "id": "4",
+      "description": "remover_local"
+    },
+    {
+      "id": "5",
+      "description": "ler_usuarios"
+    },
+    {
+      "id": "6",
+      "description": "editar_usuario"
+    },
+    {
+      "id": "7",
+      "description": "ler_locais"
+    },
+    {
+      "id": "8",
+      "description": "ler_permissoes"
+    },
+    {
+      "id": "9",
+      "description": "criar_permissão"
+    },
+    {
+      "id": "10",
+      "description": "ler_papeis"
+    },
+    {
+      "id": "11",
+      "description": "criar_papeis"
+    },
+    {
+      "id": "12",
+      "description": "ler_permissoes_papeis"
+    },
+    {
+      "id": "13",
+      "description": "adicionar_permissao_papel"
+    },
+    {
+      "id": "14",
+      "description": "adicionar_papel_usuario"
+    },
+    {
+      "id": "15",
+      "description": "deletar_usuario"
+    }
+  ],
+  "permissionRoles": [
+    {
+      "id": "1",
+      "permissionId": "1",
+      "roleId": "1"
+    },
+    {
+      "id": "2",
+      "permissionId": "2",
+      "roleId": "1"
+    },
+    {
+      "id": "3",
+      "permissionId": "2",
+      "roleId": "2"
+    },
+    {
+      "id": "4",
+      "permissionId": "3",
+      "roleId": "1"
+    },
+    {
+      "id": "5",
+      "permissionId": "4",
+      "roleId": "1"
+    },
+	{
 		"id": "6",
-		"userId": "1",
-		"local_id": "2",
-		"data_visita": "2024-07-20",
-		"desc_fauna": "Sabiás e maritacas no final da tarde.",
-		"desc_flora": "Árvores frutíferas e vegetação diversificada."
-	  },
-	  {
+		"permissionId": "5",
+		"roleId": "1"
+	},
+	{
 		"id": "7",
-		"userId": "3",
-		"local_id": "1",
-		"data_visita": "2024-08-18",
-		"desc_fauna": "Golfinhos avistados na enseada.",
-		"desc_flora": "Muitas bromélias e orquídeas nativas."
-	  }
-	]
-  }
-  
+		"permissionId": "6",
+		"roleId": "1"
+	},{
+		"id": "8",
+		"permissionId": "7",
+		"roleId": "1"
+	},{
+		"id": "9",
+		"permissionId": "8",
+		"roleId": "1"
+	},{
+		"id": "10",
+		"permissionId": "9",
+		"roleId": "1"
+	},{
+		"id": "11",
+		"permissionId": "10",
+		"roleId": "1"
+	},{
+		"id": "12",
+		"permissionId": "11",
+		"roleId": "1"
+	},{
+		"id": "13",
+		"permissionId": "12",
+		"roleId": "1"
+	},{
+		"id": "14",
+		"permissionId": "13",
+		"roleId": "1"
+	},{
+		"id": "15",
+		"permissionId": "14",
+		"roleId": "1"
+	},{
+		"id": "16",
+		"permissionId": "15",
+		"roleId": "1"
+	},{
+		"id": "17",
+		"permissionId": "5",
+		"roleId": "2"
+	},{
+		"id": "18",
+		"permissionId": "7",
+		"roleId": "2"
+	},{
+		"id": "19",
+		"permissionId": "7",
+		"roleId": "3"
+	}
+  ]
+}

@@ -24,46 +24,62 @@ export function Dashboard() {
 
   // Função para buscar locais
   async function buscarLocais() {
-    try {
-      const response = await api("/locals"); // URL da API para buscar os locais
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data,"<<GET_LOCALS>>")
-        setLocais(data);
-        // Verifique se há locais
-        if (data.length > 0) {
-          // Gere um índice aleatório
-          const indiceAleatorio = Math.floor(Math.random() * data.length);
+    try{
+      const response = await fetch("../../server.json")
+      const data = await response.json();
+      console.log(data.locals,"<<LOCAL_DATA>>")
 
-          // Pegue o local aleatório usando o índice
-          const localAleatorio = data[indiceAleatorio];
+      setLocais(data.locals)
+    }
+    // try {
+    //   const response = await api("/locals"); // URL da API para buscar os locais
+    //   if (response.ok) {
+    //     const data = await response.json();
+    //     console.log(data,"<<GET_LOCALS>>")
+    //     setLocais(data);
+    //     // Verifique se há locais
+    //     if (data.length > 0) {
+    //       // Gere um índice aleatório
+    //       const indiceAleatorio = Math.floor(Math.random() * data.length);
 
-          // Atualize as coordenadas e o nome do local
-          setLatitude(localAleatorio.localizacao.latitude);
-          setLongitude(localAleatorio.localizacao.longitude);
-          setLocationName(localAleatorio.nome);
-        }
-      } else {
-        console.error("Erro ao buscar locais");
-      }
-    } catch (error) {
+    //       // Pegue o local aleatório usando o índice
+    //       const localAleatorio = data[indiceAleatorio];
+
+    //       // Atualize as coordenadas e o nome do local
+    //       setLatitude(localAleatorio.localizacao.latitude);
+    //       setLongitude(localAleatorio.localizacao.longitude);
+    //       setLocationName(localAleatorio.nome);
+    //     }
+    //   } else {
+    //     console.error("Erro ao buscar locais");
+    //   }
+    // } 
+    catch (error) {
       console.error("Erro ao buscar locais:", error);
     }
   }
 
   // Função para buscar usuários
   async function buscarUsuarios() {
-    try {
-      const response = await fetch("https://natureza365-3teb.onrender.com/users"); // URL da API para buscar os usuários 
-      // resolver erro [401]
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data,"<<GET_USERS>>")
-        setUsuarios(data);
-      } else {
-        console.error("Erro ao buscar usuários");
-      }
-    } catch (error) {
+   try{
+    const response = await fetch("../../server.json")
+    const data = await response.json();
+    console.log(data.users,"<<DATA_USERS>>")
+
+    setUsuarios(data.users)
+   }
+    // try {
+    //   const response = await api("/users"); // URL da API para buscar os usuários 
+    //
+    //   if (response.ok) {
+    //     const data = await response.json();
+    //     console.log(data,"<<GET_USERS>>")
+    //     setUsuarios(data);
+    //   } else {
+    //     console.error("Erro ao buscar usuários");
+    //   }
+    // } 
+    catch (error) {
       console.error("Erro ao buscar usuários:", error);
     }
   }
@@ -109,14 +125,14 @@ export function Dashboard() {
             <TableHeader>
               <TableRow>
                 <TableHead>Local</TableHead>
-                <TableHead>UF</TableHead>
+                <TableHead>Endereço</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {locais.map((local) => (
                 <TableRow key={local.id}>
-                  <TableCell>{local.nome}</TableCell>
-                  <TableCell>{local.localizacao.estado}</TableCell>
+                  <TableCell>{local.name}</TableCell>
+                  <TableCell>{local.address}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

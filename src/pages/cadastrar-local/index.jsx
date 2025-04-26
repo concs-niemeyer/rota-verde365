@@ -11,33 +11,33 @@ import { api } from "../../utils/api";
 
 // Lista de UFs do Brasil
 const ufs = [
-  { sigla: 'AC', nome: 'Acre' },
-  { sigla: 'AL', nome: 'Alagoas' },
-  { sigla: 'AP', nome: 'Amapá' },
-  { sigla: 'AM', nome: 'Amazonas' },
-  { sigla: 'BA', nome: 'Bahia' },
-  { sigla: 'CE', nome: 'Ceará' },
-  { sigla: 'DF', nome: 'Distrito Federal' },
-  { sigla: 'ES', nome: 'Espírito Santo' },
-  { sigla: 'GO', nome: 'Goiás' },
-  { sigla: 'MA', nome: 'Maranhão' },
-  { sigla: 'MT', nome: 'Mato Grosso' },
-  { sigla: 'MS', nome: 'Mato Grosso do Sul' },
-  { sigla: 'MG', nome: 'Minas Gerais' },
-  { sigla: 'PA', nome: 'Pará' },
-  { sigla: 'PB', nome: 'Paraíba' },
-  { sigla: 'PR', nome: 'Paraná' },
-  { sigla: 'PE', nome: 'Pernambuco' },
-  { sigla: 'PI', nome: 'Piauí' },
-  { sigla: 'RJ', nome: 'Rio de Janeiro' },
-  { sigla: 'RN', nome: 'Rio Grande do Norte' },
-  { sigla: 'RS', nome: 'Rio Grande do Sul' },
-  { sigla: 'RO', nome: 'Rondônia' },
-  { sigla: 'RR', nome: 'Roraima' },
-  { sigla: 'SC', nome: 'Santa Catarina' },
-  { sigla: 'SP', nome: 'São Paulo' },
-  { sigla: 'SE', nome: 'Sergipe' },
-  { sigla: 'TO', nome: 'Tocantins' },
+  { sigla: "AC", nome: "Acre" },
+  { sigla: "AL", nome: "Alagoas" },
+  { sigla: "AP", nome: "Amapá" },
+  { sigla: "AM", nome: "Amazonas" },
+  { sigla: "BA", nome: "Bahia" },
+  { sigla: "CE", nome: "Ceará" },
+  { sigla: "DF", nome: "Distrito Federal" },
+  { sigla: "ES", nome: "Espírito Santo" },
+  { sigla: "GO", nome: "Goiás" },
+  { sigla: "MA", nome: "Maranhão" },
+  { sigla: "MT", nome: "Mato Grosso" },
+  { sigla: "MS", nome: "Mato Grosso do Sul" },
+  { sigla: "MG", nome: "Minas Gerais" },
+  { sigla: "PA", nome: "Pará" },
+  { sigla: "PB", nome: "Paraíba" },
+  { sigla: "PR", nome: "Paraná" },
+  { sigla: "PE", nome: "Pernambuco" },
+  { sigla: "PI", nome: "Piauí" },
+  { sigla: "RJ", nome: "Rio de Janeiro" },
+  { sigla: "RN", nome: "Rio Grande do Norte" },
+  { sigla: "RS", nome: "Rio Grande do Sul" },
+  { sigla: "RO", nome: "Rondônia" },
+  { sigla: "RR", nome: "Roraima" },
+  { sigla: "SC", nome: "Santa Catarina" },
+  { sigla: "SP", nome: "São Paulo" },
+  { sigla: "SE", nome: "Sergipe" },
+  { sigla: "TO", nome: "Tocantins" },
 ];
 
 const schema = yup.object().shape({
@@ -79,7 +79,7 @@ export function CadastrarLocal() {
         const { lat, lon } = data[0];
         setLatitude(parseFloat(lat));
         setLongitude(parseFloat(lon));
-        setLocationName(nome);
+        setLocationName(name);
       } else {
         alert("Local não encontrado.");
       }
@@ -90,56 +90,67 @@ export function CadastrarLocal() {
   }
 
   async function onSubmit(data) {
-	try {
-	  // Obtendo os valores das coordenadas
-	  if (data.nome) {
-		await buscarCoordenadas(data.nome);
-	  }
-  
-	  // Estruturando o objeto no formato esperado
-	  const localData = {
-		nome: data.name,
-		identificador_do_usuario: "USR008", // Definir como obter o identificador do usuário, se aplicável
-		descricao: data.descricao,
-		localizacao: {
-		  cep: data.cep,
-		  logadouro: data.endereco,
-		  bairro: data.bairro, // Certifique-se de adicionar este campo ao seu formulário, se necessário
-		  cidade: data.cidade,
-		  estado: data.estado, // 'estado' === UF
-		  latitude,
-		  longitude,
-		},
-		id: data.id || "", 
-	  };
-  
-	  const response = await api("/locals", {
-		method: "POST",
-		headers: {
-		  "Content-Type": "application/json",
-		},
-		body: JSON.stringify(localData),
-	  });
-  
-	  if (response.ok) {
-		alert("Local cadastrado com sucesso!");
-		navigate("/dashboard/locals");
-	  } else {
-		alert("Falha ao cadastrar local. Verifique os dados e tente novamente.");
-	  }
-	} catch (error) {
-	  console.error("Erro ao cadastrar local:", error);
-	  alert("Ocorreu um erro ao tentar cadastrar o local.");
-	}
+    try {
+      // Primeiro busca as coordenadas pelo nome do local
+      let lat = latitude;
+      let lon = longitude;
+
+      if (!lat || !lon) {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${data.name}`
+        );
+        const coordData = await response.json();
+        if (coordData.length > 0) {
+          lat = parseFloat(coordData[0].lat);
+          lon = parseFloat(coordData[0].lon);
+        } else {
+          alert("Local não encontrado.");
+          return;
+        }
+      }
+
+      // Estrutura o objeto igual o backend espera
+      const localData = {
+        name: data.name, // Nome do local
+        address: data.endereco || "", // Endereço (não obrigatório)
+        cep: data.cep, // CEP
+        desc_flora: data.descricao, // Aqui vc usa a descrição como flora (poderia separar se quiser depois)
+        desc_fauna: "", // Sem campo de fauna no form, então manda vazio
+        latitude: lat,
+        longitude: lon,
+      };
+
+      // Faz a requisição para seu backend
+      const response = await api("/locals", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // caso precise autenticação
+        },
+        body: JSON.stringify(localData),
+      });
+
+      if (response.ok) {
+        alert("Local cadastrado com sucesso!");
+        navigate("/dashboard/locals");
+      } else {
+        alert(
+          "Falha ao cadastrar local. Verifique os dados e tente novamente."
+        );
+      }
+    } catch (error) {
+      console.error("Erro ao cadastrar local:", error);
+      alert("Ocorreu um erro ao tentar cadastrar o local.");
+    }
   }
-  
+
   return (
     <div className="container-cadastar-local">
       <h1 className="h1-cadastrar-local">Cadastrar Local</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-cadastrar-local">
           <Controller
-            name="nome"
+            name="name"
             control={control}
             render={({ field }) => (
               <Input
@@ -150,16 +161,31 @@ export function CadastrarLocal() {
               />
             )}
           />
-          {errors.nome && <p className="error-message">{errors.nome.message}</p>}
+          {errors.nome && (
+            <p className="error-message">{errors.nome.message}</p>
+          )}
 
           <Controller
-            name="descricao"
+            name="desc_flora"
             control={control}
             render={({ field }) => (
-              <Input label="Descrição" placeholder="Descrição" {...field} />
+              <Input label="Flora" placeholder="Descrição da Flora" {...field} />
             )}
           />
-          {errors.descricao && <p className="error-message">{errors.descricao.message}</p>}
+          {errors.descricao && (
+            <p className="error-message">{errors.descricao.message}</p>
+          )}
+          <Controller
+            name="desc_fauna"
+            control={control}
+            render={({ field }) => (
+              <Input
+                label="Fauna"
+                placeholder="Descrição da Fauna"
+                {...field}
+              />
+            )}
+          />
 
           <Controller
             name="cep"
@@ -176,7 +202,7 @@ export function CadastrarLocal() {
           {errors.cep && <p className="error-message">{errors.cep.message}</p>}
 
           <Controller
-            name="endereco"
+            name="address"
             control={control}
             render={({ field }) => (
               <Input
@@ -216,7 +242,9 @@ export function CadastrarLocal() {
               </div>
             )}
           />
-          {errors.estado && <p className="error-message">{errors.estado.message}</p>}
+          {errors.estado && (
+            <p className="error-message">{errors.estado.message}</p>
+          )}
 
           <Controller
             name="complemento"
@@ -235,7 +263,7 @@ export function CadastrarLocal() {
             <Button
               type="button"
               onClick={() => {
-                const nomeLocal = getValues("nome");
+                const nomeLocal = getValues("name");
                 if (nomeLocal) {
                   buscarCoordenadas(nomeLocal);
                 } else {
@@ -247,7 +275,9 @@ export function CadastrarLocal() {
             </Button>
 
             <Button type="submit">Cadastrar</Button>
-            <Button variant="secondary" onClick={() => navigate("/dashboard")}>Voltar</Button>
+            <Button variant="secondary" onClick={() => navigate("/dashboard")}>
+              Voltar
+            </Button>
           </div>
         </div>
       </form>

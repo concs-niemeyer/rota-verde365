@@ -5,8 +5,11 @@ import "../../styles/signIn.css";
 import { useAuth } from "../../context/auth";
 import { useForm } from "react-hook-form";
 import { Logotipo } from "../../components/atoms/logotipo/index.jsx";
+import { useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export function SignIn() {
+   const recaptcha = useRef(null);
   const { signIn } = useAuth();
   const {
     register,
@@ -16,9 +19,17 @@ export function SignIn() {
   const navigate = useNavigate();
 
   async function onSubmit(data) {
-    try {
-      const isSuccess = await signIn(data);
+    const captchaValue = recaptcha.current?.getValue();
+  // localhost comentar esse trecho abaixo
+    if (!captchaValue) {
+      alert("Por favor, confirme que você não é um robô.");
+      return;
+    }
 
+    try {
+       // Enviando captchaValue junto se precisar validar no backend
+       const isSuccess = await signIn({ ...data, captchaValue });
+  
       if (isSuccess) {
         navigate("/dashboard");
       } else {
@@ -65,6 +76,10 @@ export function SignIn() {
                 placeholder="Senha"
                 type="password"
                 {...register("password", { required: "A senha é obrigatória" })}
+              />
+              <ReCAPTCHA
+                sitekey={import.meta.env.VITE_SITE_KEY}
+                ref={recaptcha}
               />
               <Button type="submit">Entrar</Button>
 

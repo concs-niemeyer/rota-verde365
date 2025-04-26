@@ -19,6 +19,21 @@ export function AuthProvider({ children }) {
   });
 
   async function signIn({ email, password }) {
+    // // localhost
+    // try {
+    //   const response = await fetch("../../server.json")
+    //   const data = await response.json();
+    //   console.log(data,"<<DATA_SIGNIN>>")
+    //   // Verifica se algum usuário foi retornado e se a senha corresponde
+    //   const user = data.users.find(users => users.email === email && users.password === password);
+
+    //   if (user) {
+    //     setUser(user);
+    //     localStorage.setItem("@rotaverde365:user", JSON.stringify(user));
+    //     return true;
+    //   }
+    
+      // for production enviroment uncomment bellow
     try {
       const response = await api("/login", {
         method: "POST",
@@ -33,7 +48,9 @@ export function AuthProvider({ children }) {
         setUser(user);
         localStorage.setItem("@rotaverde365:user", JSON.stringify(user));
         return true;
-      } else {
+      } 
+      
+      else {
         console.error("Erro ao fazer login:", await response.text());
         return false;
       }

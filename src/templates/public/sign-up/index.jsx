@@ -70,7 +70,7 @@ export function SignUp() {
   }
 
   async function onSubmit(data) {
-    console.log("Clickou!")
+    // console.log("Clickou!")
     const captchaValue = recaptcha.current?.getValue();
   
     if (!captchaValue) {
