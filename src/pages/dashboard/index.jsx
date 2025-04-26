@@ -53,7 +53,8 @@ export function Dashboard() {
   // Função para buscar usuários
   async function buscarUsuarios() {
     try {
-      const response = await fetch("https://natureza365-3teb.onrender.com/users"); // URL da API para buscar os usuários
+      const response = await fetch("https://natureza365-3teb.onrender.com/users"); // URL da API para buscar os usuários 
+      // resolver erro [401]
       if (response.ok) {
         const data = await response.json();
         console.log(data,"<<GET_USERS>>")

@@ -27,9 +27,9 @@ export function AuthProvider({ children }) {
         },
         body: JSON.stringify({ email, password }),
       });
-      console.log(body, "<<<RESPOSTA>>>")
       if (response.ok) {
         const user = await response.json();
+        //console.log(user, "<<<TOKEN>>>")
         setUser(user);
         localStorage.setItem("@rotaverde365:user", JSON.stringify(user));
         return true;

@@ -20,9 +20,9 @@ export function Locais() {
   async function buscarLocais() {
     try {
       const response = await fetch("https://natureza365-3teb.onrender.com/locals"); // URL da API para buscar os locais
-      console.log(response,"<<GET_LOCALS>>")
       if (response.ok) {
         const data = await response.json();
+        console.log(data,"<<GET_LOCALS>>")
         setLocais(data);
       } else {
         console.error("Erro ao buscar locais");
