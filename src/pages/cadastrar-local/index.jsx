@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Mapa from "../../components/atoms/mapMyLocation";
 import "../../styles/CadastrarLocal.css";
+import { api } from "../../utils/api";
 
 // Lista de UFs do Brasil
 const ufs = [
@@ -40,10 +41,10 @@ const ufs = [
 ];
 
 const schema = yup.object().shape({
-  nome: yup.string().required("Nome é obrigatório"),
-  descricao: yup.string().required("Descrição é obrigatória"),
+  name: yup.string().required("O nome é obrigatório"),
+  description: yup.string().required("A descrição é obrigatória"),
   cep: yup.string().matches(/^\d{5}-?\d{3}$/, "CEP inválido. Ex: 12345-678"),
-  endereco: yup.string(),
+  address: yup.string(),
   numero: yup.string(),
   estado: yup.string().required("UF é obrigatória"),
   complemento: yup.string(),
@@ -64,10 +65,13 @@ export function CadastrarLocal() {
     resolver: yupResolver(schema),
   });
 
-  async function buscarCoordenadas(nome) {
+  // refatorar: Buscar o endereço pela API viaCEP e completar os campos. (busca pelo CEP),
+  // Buscar as coordenadas pelo nome (Nominatim) [ok]
+
+  async function buscarCoordenadas(name) {
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${nome}`
+        `https://nominatim.openstreetmap.org/search?format=json&q=${name}`
       );
       const data = await response.json();
 
@@ -84,6 +88,7 @@ export function CadastrarLocal() {
       alert("Ocorreu um erro ao buscar coordenadas.");
     }
   }
+
   async function onSubmit(data) {
 	try {
 	  // Obtendo os valores das coordenadas
@@ -93,7 +98,7 @@ export function CadastrarLocal() {
   
 	  // Estruturando o objeto no formato esperado
 	  const localData = {
-		nome: data.nome,
+		nome: data.name,
 		identificador_do_usuario: "USR008", // Definir como obter o identificador do usuário, se aplicável
 		descricao: data.descricao,
 		localizacao: {
@@ -108,7 +113,7 @@ export function CadastrarLocal() {
 		id: data.id || "", 
 	  };
   
-	  const response = await fetch("https://natureza365-3teb.onrender.com/locais", {
+	  const response = await api("/locals", {
 		method: "POST",
 		headers: {
 		  "Content-Type": "application/json",

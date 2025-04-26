@@ -16,7 +16,7 @@ export function Locais() {
   const navigate = useNavigate();
 
 
-  // Função para buscar locais
+  // Função para buscar locais deve realizar o fetch das duas tabelas Locais e Descrições
   async function buscarLocais() {
     try {
       const response = await fetch("https://natureza365-3teb.onrender.com/locals"); // URL da API para buscar os locais
@@ -63,7 +63,8 @@ export function Locais() {
             {locais.map((local) => (
               <TableRow key={local.id}>
                 <TableCell>{local.nome}</TableCell>
-                <TableCell>{local.descricao}</TableCell>
+                {/* Realizar o fetch das duas tabelas Locais e Descrições
+                <TableCell>{local.descricao}</TableCell> */}
                 <TableCell>{local.localizacao.estado}</TableCell>
               </TableRow>
             ))}

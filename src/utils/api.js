@@ -6,7 +6,8 @@
  */
 
 export function api( endpoint, init ) {
-	const url = `https://natureza365-3teb.onrender.com` + endpoint
+	const serverUrl = process.env.SERVER_URL
+	const url = serverUrl + endpoint
 
 	return fetch(url, init)
 }

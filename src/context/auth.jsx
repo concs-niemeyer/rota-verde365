@@ -45,7 +45,7 @@ export function AuthProvider({ children }) {
 
   async function signUp(userData) {
     try {
-      const response = await api("/user", {
+      const response = await api("/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export function AuthProvider({ children }) {
 
       if (response.ok) {
         const data = await response.json();
-        return data.success || true; // Corrigido de `data.sucess` para `data.success`
+        return data.success || true;
       } else {
         const errorData = await response.json();
         console.error("Erro ao cadastrar:", errorData);

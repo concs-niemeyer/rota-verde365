@@ -13,6 +13,7 @@ import {
 } from "../../components/molecules/table";
 import "../../styles/dashboard.css";
 import Mapa from "../../components/atoms/mapMyLocation";
+import { api } from "../../utils/api";
 
 export function Dashboard() {
   const [locais, setLocais] = useState([]);
@@ -24,7 +25,7 @@ export function Dashboard() {
   // Função para buscar locais
   async function buscarLocais() {
     try {
-      const response = await fetch("https://natureza365-3teb.onrender.com/locals"); // URL da API para buscar os locais
+      const response = await api("/locals"); // URL da API para buscar os locais
       if (response.ok) {
         const data = await response.json();
         console.log(data,"<<GET_LOCALS>>")
