@@ -59,7 +59,7 @@ export function SignUp() {
 
   async function checkCpfExists(cpf) {
     try {
-      const response = await fetch("https://natureza365-3teb.onrender.com/user");
+      const response = await fetch("https://natureza365-3teb.onrender.com/users");
       const users = await response.json();
       return users.some((user) => user.cpf === cpf);
     } catch (error) {
