@@ -25,6 +25,7 @@ export function Dashboard() {
   async function buscarLocais() {
     try {
       const response = await fetch("https://natureza365-3teb.onrender.com/local"); // URL da API para buscar os locais
+      console.log(response,"<<GET_LOCALS>>")
       if (response.ok) {
         const data = await response.json();
         setLocais(data);
@@ -53,6 +54,7 @@ export function Dashboard() {
   async function buscarUsuarios() {
     try {
       const response = await fetch("https://natureza365-3teb.onrender.com/user"); // URL da API para buscar os usuários
+      console.log(response,"<<GET_USERS>>")
       if (response.ok) {
         const data = await response.json();
         setUsuarios(data);
