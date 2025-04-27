@@ -2,7 +2,7 @@ export function api(endpoint, init = {}) {
   const url = `https://natureza365-3teb.onrender.com${endpoint}`;
   console.log(`API URL: ${url}`); // Log the full API URL
 
-  const token = JSON.parse(localStorage.getItem("@rotaverde365:user"))?.Token;
+  const token = JSON.parse(localStorage.getItem("@rotaverde365:user"))?.token;
   console.log(`Token: ${token ? "Token found" : "No token found"}`); // Log whether a token is present
 
   const authHeaders = token
