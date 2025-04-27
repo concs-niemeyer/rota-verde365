@@ -1,12 +1,21 @@
-/**
- * 
- * @param {string} endpoint 
- * @param {RequestInit} init 
- * @returns 
- */
-export function api(endpoint, init) {
-	// const serverUrl = import.meta.env.VITE_SERVER_URL; // Aqui é import.meta.env
-	const url = `https://natureza365-3teb.onrender.com` + endpoint;
-
-	return fetch(url, init);
-}
+export function api(endpoint, init = {}) {
+	const url = `https://natureza365-3teb.onrender.com${endpoint}`;
+  
+	const token = JSON.parse(localStorage.getItem("@rotaverde365:user"))?.Token;
+  
+	const authHeaders = token
+	  ? { Authorization: `Bearer ${token}` }
+	  : {};
+  
+	const config = {
+	  ...init,
+	  headers: {
+		"Content-Type": "application/json",
+		...authHeaders,
+		...init.headers, // Prioriza os headers que você passar manualmente
+	  },
+	};
+  
+	return fetch(url, config);
+  }
+  
