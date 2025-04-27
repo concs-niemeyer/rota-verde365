@@ -24,36 +24,36 @@ export function Dashboard() {
 
   // Função para buscar locais
   async function buscarLocais() {
-    try{
-      const response = await fetch("../../server.json")
-      const data = await response.json();
-      console.log(data.locals,"<<LOCAL_DATA>>")
+    // try{
+    //   const response = await fetch("../../server.json")
+    //   const data = await response.json();
+    //   console.log(data.locals,"<<LOCAL_DATA>>")
 
-      setLocais(data.locals)
-    }
-    // try {
-    //   const response = await api("/locals"); // URL da API para buscar os locais
-    //   if (response.ok) {
-    //     const data = await response.json();
-    //     console.log(data,"<<GET_LOCALS>>")
-    //     setLocais(data);
-    //     // Verifique se há locais
-    //     if (data.length > 0) {
-    //       // Gere um índice aleatório
-    //       const indiceAleatorio = Math.floor(Math.random() * data.length);
+    //   setLocais(data.locals)
+    // }
+    try {
+      const response = await api("/locals"); // URL da API para buscar os locais
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data,"<<GET_LOCALS>>")
+        setLocais(data);
+        // Verifique se há locais
+        if (data.length > 0) {
+          // Gere um índice aleatório
+          const indiceAleatorio = Math.floor(Math.random() * data.length);
 
-    //       // Pegue o local aleatório usando o índice
-    //       const localAleatorio = data[indiceAleatorio];
+          // Pegue o local aleatório usando o índice
+          const localAleatorio = data[indiceAleatorio];
 
-    //       // Atualize as coordenadas e o nome do local
-    //       setLatitude(localAleatorio.localizacao.latitude);
-    //       setLongitude(localAleatorio.localizacao.longitude);
-    //       setLocationName(localAleatorio.nome);
-    //     }
-    //   } else {
-    //     console.error("Erro ao buscar locais");
-    //   }
-    // } 
+          // Atualize as coordenadas e o nome do local
+          setLatitude(localAleatorio.localizacao.latitude);
+          setLongitude(localAleatorio.localizacao.longitude);
+          setLocationName(localAleatorio.nome);
+        }
+      } else {
+        console.error("Erro ao buscar locais");
+      }
+    } 
     catch (error) {
       console.error("Erro ao buscar locais:", error);
     }
@@ -61,24 +61,23 @@ export function Dashboard() {
 
   // Função para buscar usuários
   async function buscarUsuarios() {
-   try{
-    const response = await fetch("../../server.json")
-    const data = await response.json();
-    console.log(data.users,"<<DATA_USERS>>")
+  //  try{
+  //   const response = await fetch("../../server.json")
+  //   const data = await response.json();
+  //   console.log(data.users,"<<DATA_USERS>>")
 
-    setUsuarios(data.users)
-   }
-    // try {
-    //   const response = await api("/users"); // URL da API para buscar os usuários 
-    //
-    //   if (response.ok) {
-    //     const data = await response.json();
-    //     console.log(data,"<<GET_USERS>>")
-    //     setUsuarios(data);
-    //   } else {
-    //     console.error("Erro ao buscar usuários");
-    //   }
-    // } 
+  //   setUsuarios(data.users)
+  try {
+    const response = await api("/users"); // URL da API para buscar os usuários 
+    
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data,"<<GET_USERS>>")
+        setUsuarios(data);
+      } else {
+        console.error("Erro ao buscar usuários");
+      }
+    } 
     catch (error) {
       console.error("Erro ao buscar usuários:", error);
     }

@@ -112,10 +112,10 @@ export function CadastrarLocal() {
       // Estrutura o objeto igual o backend espera
       const localData = {
         name: data.name, // Nome do local
-        address: data.endereco || "", // Endereço (não obrigatório)
-        cep: data.cep, // CEP
-        desc_flora: data.descricao, // Aqui vc usa a descrição como flora (poderia separar se quiser depois)
-        desc_fauna: "", // Sem campo de fauna no form, então manda vazio
+        address: data.endereco, // Endereço 
+        cep: data.cep || "", // CEP (não obrigatório)
+        desc_flora: data.desc_flora, 
+        desc_fauna: data.desc_fauna, 
         latitude: lat,
         longitude: lon,
       };
