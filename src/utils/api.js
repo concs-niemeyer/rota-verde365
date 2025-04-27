@@ -6,7 +6,7 @@ export function api(endpoint, init = {}) {
   console.log(`Token: ${token ? "Token found" : "No token found"}`); // Log whether a token is present
 
   const authHeaders = token
-    ? { Authorization: `Bearer ${token}` }
+    ? { Authorization: token }
     : {};
   console.log("Auth Headers:", authHeaders); // Log the authorization headers
 
