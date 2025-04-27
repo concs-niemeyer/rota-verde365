@@ -19,22 +19,10 @@ export function AuthProvider({ children }) {
   });
 
   async function signIn({ email, password }) {
-    // // localhost
-    // try {
-    //   const response = await fetch("../../server.json")
-    //   const data = await response.json();
-    //   console.log(data,"<<DATA_SIGNIN>>")
-    //   // Verifica se algum usuário foi retornado e se a senha corresponde
-    //   const user = data.users.find(users => users.email === email && users.password === password);
+    console.log("Attempting to sign in with email:", email); // Log the email being used for sign-in
 
-    //   if (user) {
-    //     setUser(user);
-    //     localStorage.setItem("@rotaverde365:user", JSON.stringify(user));
-    //     return true;
-    //   }
-    
-      // for production enviroment uncomment bellow
     try {
+      console.log("Sending login request to API..."); // Log before making the API call
       const response = await api("/login", {
         method: "POST",
         headers: {
@@ -42,20 +30,23 @@ export function AuthProvider({ children }) {
         },
         body: JSON.stringify({ email, password }),
       });
+
+      console.log("Response received from API:", response); // Log the raw response object
+
       if (response.ok) {
         const user = await response.json();
-        console.log(user, "<<<TOKEN>>>")
+        console.log("Login successful. User data:", user); // Log the user data received from the API
         setUser(user);
         localStorage.setItem("@rotaverde365:user", JSON.stringify(user));
+        console.log("User data saved to state and localStorage."); // Log confirmation of data storage
         return true;
-      } 
-      
-      else {
-        console.error("Erro ao fazer login:", await response.text());
+      } else {
+        const errorText = await response.text();
+        console.error("Login failed. Error response:", errorText); // Log the error response text
         return false;
       }
     } catch (error) {
-      console.error("Erro ao fazer login:", error);
+      console.error("An error occurred during login:", error); // Log any unexpected errors
       return false;
     }
   }
