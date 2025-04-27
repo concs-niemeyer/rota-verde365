@@ -21,11 +21,13 @@ export function Locais() {
   async function buscarLocais() {
     try {
       setLoading(true); // <<< Começa o carregamento
-      const response = await fetch("../../server.json");
-      const data = await response.json();
-      
-      const locaisComDescricao = data.locals.map((local) => {
-        const descricao = data.descriptions.find((desc) => desc.local_id === local.id) || {};
+      const localResponse = await api("/locals");
+      const localData = await localResponse.json();
+      const descriptionResponse = await api("/descriptions");
+      const descriptionData = await descriptionResponse.json();
+    
+      const locaisComDescricao = localData.locals.map((local) => {
+        const descricao = descriptionData.descriptions.find((desc) => desc.local_id === local.id) || {};
   
         return {
           id: local.id,

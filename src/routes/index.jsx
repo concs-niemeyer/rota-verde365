@@ -5,6 +5,7 @@ import { PrivateRouteLayout } from "../templates/private/index.jsx";
 import { Locais } from "../pages/locals/index.jsx";
 import { Dashboard } from "../pages/dashboard/index.jsx"; 
 import { CadastrarLocal } from "../pages/cadastrar-local/index.jsx";
+import { Profile } from "../pages/profile/index.jsx";
 
 export const routes = createBrowserRouter([
 	{
@@ -26,6 +27,10 @@ export const routes = createBrowserRouter([
 			{
 				path: '/dashboard/locals',
 				element: <Locais />,
+			},
+			{
+				path: '/dashboard/profile',
+				element: <Profile/>
 			},
 			{
 				path:'/dashboard/locals/cadastrar',

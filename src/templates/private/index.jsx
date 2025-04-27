@@ -1,5 +1,5 @@
 import { Navigate, NavLink, Outlet } from "react-router-dom";
-import { Home, MapPinned, LogOut, Profile } from "lucide-react";
+import { Home, MapPinned, LogOut, User } from "lucide-react";
 import { useAuth } from "../../context/auth"; // Ajuste o caminho conforme necessário
 import "../../styles/dashboard.css";
 import { Logotipo } from "../../components/atoms/logotipo/index.jsx";
@@ -35,7 +35,7 @@ export function PrivateRouteLayout() {
                 to="/dashboard/profile"
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
-                <Profile size={24} /> Conta
+                <User size={24} /> Conta
               </NavLink>
             </li>
           </ul>
