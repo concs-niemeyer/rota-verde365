@@ -23,8 +23,8 @@ export function Locais() {
       setLoading(true); // <<< Começa o carregamento
       const localResponse = await api("/locals");
       const localData = await localResponse.json();
+      console.log(localData, ":::LOCAL_DATA:::")
       // Fazer o fetch na tabela de Descrições.
-      const descriptionResponse = await api("/descriptions");
       const descriptionData = await descriptionResponse.json();
     
       const locaisComDescricao = localData.locals.map((local) => {
