@@ -20,15 +20,14 @@ export function Locais() {
   // Função para buscar locais deve realizar o fetch das duas tabelas Locais e Descrições
   async function buscarLocais() {
     try {
-      setLoading(true); // <<< Começa o carregamento
+      setLoading(true);
+      
       const localResponse = await api("/locals");
       const localData = await localResponse.json();
-      console.log(localData, ":::LOCAL_DATA:::")
-      // Fazer o fetch na tabela de Descrições.
-      const descriptionData = await descriptionResponse.json();
-    
-      const locaisComDescricao = localData.locals.map((local) => {
-        const descricao = descriptionData.descriptions.find((desc) => desc.localId === local.id) || {};
+      console.log(localData, ":::LOCAL_DATA:::");
+  
+      const locaisComDescricao = localData.locais.map((local) => {
+        const descricao = localData.descriptionLocal || {}; // Já está no localData
   
         return {
           id: local.id,
@@ -42,10 +41,11 @@ export function Locais() {
       });
   
       setLocais(locaisComDescricao);
+  
     } catch (error) {
       console.error("Erro ao buscar locais:", error);
     } finally {
-      setLoading(false); // <<< Quando terminar (com sucesso ou erro), para de carregar
+      setLoading(false);
     }
   }
   
