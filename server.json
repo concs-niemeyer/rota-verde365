@@ -4,7 +4,7 @@
       "nome": "Bruno Martins",
       "sexo": "Masculino",
       "cpf": "11122233344",
-      "data_nascimento": "1991-06-20",
+      "dataNascimento": "1991-06-20",
       "email": "martins@example.com",
       "password": "123",
       "id": "1"
@@ -13,7 +13,7 @@
       "nome": "Fernanda Rocha",
       "sexo": "Feminino",
       "cpf": "55566677788",
-      "data_nascimento": "1989-04-12",
+      "dataNascimento": "1989-04-12",
       "email": "fernanda.rocha@example.com",
       "password": "1234abcd",
       "id": "2"
@@ -22,7 +22,7 @@
       "nome": "Ricardo Pereira",
       "sexo": "Masculino",
       "cpf": "99900011122",
-      "data_nascimento": "1993-10-05",
+      "dataNascimento": "1993-10-05",
       "email": "ricardo.pereira@example.com",
       "password": "abcd1234",
       "id": "3"
@@ -79,58 +79,58 @@
     {
       "id": "1",
       "userId": "1",
-      "local_id": "l",
-      "data_visita": "2024-02-10",
-      "desc_fauna": "Avistados golfinhos e tartarugas.",
-      "desc_flora": "Vegetação nativa preservada."
+      "localId": "l",
+      "dataVisita": "2024-02-10",
+      "descFauna": "Avistados golfinhos e tartarugas.",
+      "descFlora": "Vegetação nativa preservada."
     },
     {
       "id": "2",
       "userId": "2",
-      "local_id": "2",
-      "data_visita": "2024-03-15",
-      "desc_fauna": "Diversidade de aves urbanas.",
-      "desc_flora": "Área verde ampla e bem cuidada."
+      "localId": "2",
+      "dataVisita": "2024-03-15",
+      "descFauna": "Diversidade de aves urbanas.",
+      "descFlora": "Área verde ampla e bem cuidada."
     },
     {
       "id": "3",
       "userId": "3",
-      "local_id": "3",
-      "data_visita": "2024-04-05",
-      "desc_fauna": "Tatus, veados e diversas aves.",
-      "desc_flora": "Vegetação típica do cerrado."
+      "localId": "3",
+      "dataVisita": "2024-04-05",
+      "descFauna": "Tatus, veados e diversas aves.",
+      "descFlora": "Vegetação típica do cerrado."
     },
     {
       "id": "4",
       "userId": "1",
-      "local_id": "4",
-      "data_visita": "2024-05-01",
-      "desc_fauna": "Macacos e quatis visíveis.",
-      "desc_flora": "Floresta densa e úmida."
+      "localId": "4",
+      "dataVisita": "2024-05-01",
+      "descFauna": "Macacos e quatis visíveis.",
+      "descFlora": "Floresta densa e úmida."
     },
     {
       "id": "5",
       "userId": "2",
-      "local_id": "5",
-      "data_visita": "2024-06-10",
-      "desc_fauna": "Animais típicos do cerrado observados.",
-      "desc_flora": "Cerrado preservado e trilhas naturais."
+      "localId": "5",
+      "dataVisita": "2024-06-10",
+      "descFauna": "Animais típicos do cerrado observados.",
+      "descFlora": "Cerrado preservado e trilhas naturais."
     },
     {
       "id": "6",
       "userId": "1",
-      "local_id": "2",
-      "data_visita": "2024-07-20",
-      "desc_fauna": "Sabiás e maritacas no final da tarde.",
-      "desc_flora": "Árvores frutíferas e vegetação diversificada."
+      "localId": "2",
+      "dataVisita": "2024-07-20",
+      "descFauna": "Sabiás e maritacas no final da tarde.",
+      "descFlora": "Árvores frutíferas e vegetação diversificada."
     },
     {
       "id": "7",
       "userId": "3",
-      "local_id": "1",
-      "data_visita": "2024-08-18",
-      "desc_fauna": "Golfinhos avistados na enseada.",
-      "desc_flora": "Muitas bromélias e orquídeas nativas."
+      "localId": "1",
+      "dataVisita": "2024-08-18",
+      "descFauna": "Golfinhos avistados na enseada.",
+      "descFlora": "Muitas bromélias e orquídeas nativas."
     }
   ],
   "userRoles": [

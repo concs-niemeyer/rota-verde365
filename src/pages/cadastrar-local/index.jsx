@@ -114,8 +114,8 @@ export function CadastrarLocal() {
         name: data.name, // Nome do local
         address: data.endereco, // Endereço 
         cep: data.cep || "", // CEP (não obrigatório)
-        desc_flora: data.desc_flora, 
-        desc_fauna: data.desc_fauna, 
+        descFlora: data.descFlora, 
+        descFauna: data.descFauna, 
         latitude: lat,
         longitude: lon,
       };
@@ -166,7 +166,7 @@ export function CadastrarLocal() {
           )}
 
           <Controller
-            name="desc_flora"
+            name="descFlora"
             control={control}
             render={({ field }) => (
               <Input label="Flora" placeholder="Descrição da Flora" {...field} />
@@ -176,7 +176,7 @@ export function CadastrarLocal() {
             <p className="error-message">{errors.descricao.message}</p>
           )}
           <Controller
-            name="desc_fauna"
+            name="descFauna"
             control={control}
             render={({ field }) => (
               <Input

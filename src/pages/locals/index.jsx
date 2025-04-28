@@ -27,16 +27,16 @@ export function Locais() {
       const descriptionData = await descriptionResponse.json();
     
       const locaisComDescricao = localData.locals.map((local) => {
-        const descricao = descriptionData.descriptions.find((desc) => desc.local_id === local.id) || {};
+        const descricao = descriptionData.descriptions.find((desc) => desc.localId === local.id) || {};
   
         return {
           id: local.id,
           name: local.name,
           userId: descricao.userId || "",
           address: local.address,
-          desc_fauna: descricao.desc_fauna || "",
-          desc_flora: descricao.desc_flora || "",
-          data_visita: descricao.data_visita || "",
+          descFauna: descricao.descFauna || "",
+          descFlora: descricao.descFlora || "",
+          dataVisita: descricao.dataVisita || "",
         };
       });
   
@@ -94,9 +94,9 @@ export function Locais() {
             <TableCell>{local.name}</TableCell>
             <TableCell>{local.userId}</TableCell>
             <TableCell>{local.address}</TableCell>
-            <TableCell>{local.desc_fauna}</TableCell>
-            <TableCell>{local.desc_flora}</TableCell>
-            <TableCell>{formatarData(local.data_visita)}</TableCell>
+            <TableCell>{local.descFauna}</TableCell>
+            <TableCell>{local.descFlora}</TableCell>
+            <TableCell>{formatarData(local.dataVisita)}</TableCell>
           </TableRow>
         ))}
       </TableBody>

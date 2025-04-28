@@ -23,7 +23,7 @@ const schema = yup.object().shape({
     .min(8, "Senha deve ter pelo menos 8 caracteres")
     .max(64, "Senha deve ter no máximo 32 caracteres")
     .required("Senha é obrigatória"),
-  data_nascimento: yup.date().nullable(),
+  dataNascimento: yup.date().nullable(),
 });
 
 export function SignUp() {
@@ -142,7 +142,7 @@ export function SignUp() {
           {errors.cpf && <p className="error-message">{errors.cpf.message}</p>}
 
           <Controller
-            name="data_nascimento"
+            name="dataNascimento"
             control={control}
             render={({ field }) => (
               <Input
@@ -154,8 +154,8 @@ export function SignUp() {
               />
             )}
           />
-          {errors.data_nascimento && (
-            <p className="error-message">{errors.data_nascimento.message}</p>
+          {errors.dataNascimento && (
+            <p className="error-message">{errors.dataNascimento.message}</p>
           )}
 
           <Controller
