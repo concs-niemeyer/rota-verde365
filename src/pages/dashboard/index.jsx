@@ -18,8 +18,8 @@ import { api } from "../../utils/api";
 export function Dashboard() {
   const [locais, setLocais] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  const [lat, setLat] = useState(null);
+  const [lon, setLon] = useState(null);
   const [locationName, setLocationName] = useState("");
 
   // Função para buscar locais
@@ -46,8 +46,8 @@ export function Dashboard() {
           const localAleatorio = data[indiceAleatorio];
 
           // Atualize as coordenadas e o nome do local
-          setLatitude(localAleatorio.localizacao.latitude);
-          setLongitude(localAleatorio.localizacao.longitude);
+          setLat(localAleatorio.localizacao.lat);
+          setLon(localAleatorio.localizacao.lon);
           setLocationName(localAleatorio.nome);
         }
       } else {
@@ -101,11 +101,11 @@ export function Dashboard() {
         <Card title="Locais" total={locais.length} iconElement={MapPinned} />
       </div>
 
-      {latitude && longitude && (
+      {lat && lon && (
         <div className="mapa-dashboard">
           <Mapa
-            latitude={latitude}
-            longitude={longitude}
+            lat={lat}
+            lon={lon}
             locationName={locationName}
           />
         </div>

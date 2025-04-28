@@ -51,8 +51,8 @@ const schema = yup.object().shape({
 });
 
 export function CadastrarLocal() {
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  const [lat, setLat] = useState("");
+  const [lon, setLon] = useState("");
   const [locationName, setLocationName] = useState("");
   const navigate = useNavigate();
 
@@ -77,8 +77,8 @@ export function CadastrarLocal() {
 
       if (data.length > 0) {
         const { lat, lon } = data[0];
-        setLatitude(parseFloat(lat));
-        setLongitude(parseFloat(lon));
+        setLat(parseFloat(lat));
+        setLon(parseFloat(lon));
         setLocationName(name);
       } else {
         alert("Local não encontrado.");
@@ -92,8 +92,8 @@ export function CadastrarLocal() {
   async function onSubmit(data) {
     try {
       // Primeiro busca as coordenadas pelo nome do local
-      let lat = latitude;
-      let lon = longitude;
+      let lat = lat;
+      let lon = lon;
 
       if (!lat || !lon) {
         const response = await fetch(
@@ -116,8 +116,8 @@ export function CadastrarLocal() {
         cep: data.cep || "", // CEP (não obrigatório)
         descFlora: data.descFlora, 
         descFauna: data.descFauna, 
-        latitude: lat,
-        longitude: lon,
+        lat: lat,
+        lon: lon,
       };
 
       // Faz a requisição para seu backend
@@ -284,8 +284,8 @@ export function CadastrarLocal() {
       <div className="mapa-cadastrar-local">
         <span>Mapa</span>
         <Mapa
-          latitude={latitude}
-          longitude={longitude}
+          lat={lat}
+          lon={lon}
           locationName={locationName}
         />
       </div>
