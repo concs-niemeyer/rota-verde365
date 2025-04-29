@@ -35,8 +35,7 @@ export function Dashboard() {
       const response = await api("/locals"); // URL da API para buscar os locais
       if (response.ok) {
         const data = await response.json();
-        // console.log(data[0].lat,"<<LATITUDE>>")
-        // console.log(data[0].lon,"<<LONGITUDE>>")
+        console.log(data,"<<DATA>>")
         setLocais(data);
         // Verifique se há locais
         if (data.length > 0) {

@@ -18,7 +18,7 @@ export function Locais() {
   const navigate = useNavigate();
 
   // Função para buscar locais deve realizar o fetch das duas tabelas Locais e Descrições
-  async function buscarLocais() {
+  async function buscarLocaisComDescricao() {
     try {
       setLoading(true);
       
@@ -57,7 +57,7 @@ export function Locais() {
   
 
   useEffect(() => {
-    buscarLocais();
+    buscarLocaisComDescricao();
   }, []);
 
   return (
