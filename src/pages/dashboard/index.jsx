@@ -24,19 +24,12 @@ export function Dashboard() {
 
   // Função para buscar locais
   async function buscarLocais() {
-    // try{
-    //   const response = await fetch("../../server.json")
-    //   const data = await response.json();
-    //   console.log(data.locals,"<<LOCAL_DATA>>")
-
-    //   setLocais(data.locals)
-    // }
     try {
       const response = await api("/locals"); // URL da API para buscar os locais
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data,"<<DATA>>")
-        setLocais(data);
+      const data = await response.json();
+      console.log(data,"<<DATA_DASHBOARD>>")
+      setLocais(data);
+      if (data) {
         // Verifique se há locais
         if (data.length > 0) {
           // Gere um índice aleatório

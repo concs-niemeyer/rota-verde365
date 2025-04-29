@@ -14,7 +14,7 @@ import { api } from "../../utils/api";
 
 export function Locais() {
   const [locais, setLocais] = useState([]);
-  const [loading, setLoading] =useState(false)
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
 
   // Função para buscar locais deve realizar o fetch das duas tabelas Locais e Descrições
@@ -48,14 +48,15 @@ export function Locais() {
       setLoading(false);
     }
   }
+  function formatDate(isoString) {
+    const date = new Date(isoString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Janeiro é 0
+    const year = date.getFullYear();
   
-  function formatarData(dataISO) {
-    if (!dataISO) return "";
-    const [ano, mes, dia] = dataISO.split("-");
-    return `${dia}/${mes}/${ano}`;
+    return `${day}/${month}/${year}`;
   }
   
-
   useEffect(() => {
     buscarLocaisComDescricao();
   }, []);
