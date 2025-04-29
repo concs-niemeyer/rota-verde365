@@ -27,51 +27,47 @@ export function Dashboard() {
     try {
       const response = await api("/locals"); // URL da API para buscar os locais
       const data = await response.json();
-      console.log(data,"<<DATA_DASHBOARD>>")
-      setLocais(data);
-      if (data) {
-        // Verifique se há locais
-        if (data.length > 0) {
-          // Gere um índice aleatório
-          const indiceAleatorio = Math.floor(Math.random() * data.length);
+      console.log(data.locais, "<<DATA.LOCAIS_DASHBOARD>>");
+      setLocais(data.locais);
+      // Verifique se há locais
+      if (data.locais.length > 0) {
+        // Gere um índice aleatório
+        const indiceAleatorio = Math.floor(Math.random() * data.locais.length);
 
-          // Pegue o local aleatório usando o índice
-          const localAleatorio = data[indiceAleatorio];
+        // Pegue o local aleatório usando o índice
+        const localAleatorio = data[indiceAleatorio];
 
-          // Atualize as coordenadas e o nome do local
-          setLat(localAleatorio.lat);
-          setLon(localAleatorio.lon);
-          setLocationName(localAleatorio.nome);
-        }
+        // Atualize as coordenadas e o nome do local
+        setLat(localAleatorio.lat);
+        setLon(localAleatorio.lon);
+        setLocationName(localAleatorio.nome);
       } else {
         console.error("Erro ao buscar locais");
       }
-    } 
-    catch (error) {
+    } catch (error) {
       console.error("Erro ao buscar locais:", error);
     }
   }
 
   // Função para buscar usuários
   async function buscarUsuarios() {
-  //  try{
-  //   const response = await fetch("../../server.json")
-  //   const data = await response.json();
-  //   console.log(data.users,"<<DATA_USERS>>")
+    //  try{
+    //   const response = await fetch("../../server.json")
+    //   const data = await response.json();
+    //   console.log(data.users,"<<DATA_USERS>>")
 
-  //   setUsuarios(data.users)
-  try {
-    const response = await api("/users"); // URL da API para buscar os usuários 
-    
+    //   setUsuarios(data.users)
+    try {
+      const response = await api("/users"); // URL da API para buscar os usuários
+
       if (response.ok) {
         const data = await response.json();
-        console.log(data,"<<GET_USERS>>")
+        console.log(data, "<<GET_USERS>>");
         setUsuarios(data);
       } else {
         console.error("Erro ao buscar usuários");
       }
-    } 
-    catch (error) {
+    } catch (error) {
       console.error("Erro ao buscar usuários:", error);
     }
   }
@@ -96,11 +92,7 @@ export function Dashboard() {
 
       {lat && lon && (
         <div className="mapa-dashboard">
-          <Mapa
-            lat={lat}
-            lon={lon}
-            locationName={locationName}
-          />
+          <Mapa lat={lat} lon={lon} locationName={locationName} />
         </div>
       )}
 
