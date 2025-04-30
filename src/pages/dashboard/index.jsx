@@ -36,6 +36,7 @@ export function Dashboard() {
 
         // Pegue o local aleatório usando o índice
         const localAleatorio = data[indiceAleatorio];
+        console.log(localAleatorio, "<<LOCAL_ALEATÒRIO>>")
 
         // Atualize as coordenadas e o nome do local
         setLat(localAleatorio.lat);
@@ -59,6 +60,7 @@ export function Dashboard() {
     //   setUsuarios(data.users)
     try {
       const response = await api("/users"); // URL da API para buscar os usuários
+      console.log(response, ":::RESPOSTA_USERS:::")
 
       if (response.ok) {
         const data = await response.json();
