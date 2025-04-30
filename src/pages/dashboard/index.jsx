@@ -16,7 +16,7 @@ import Mapa from "../../components/atoms/mapMyLocation";
 import { api } from "../../utils/api";
 
 export function Dashboard() {
-  const [locais, setLocais] = useState([]);
+  const [locals, setLocals] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
   const [lat, setLat] = useState(null);
   const [lon, setLon] = useState(null);
@@ -27,12 +27,12 @@ export function Dashboard() {
     try {
       const response = await api("/locals");
       const data = await response.json();
-      console.log(data.locais, "<<DATA.LOCAIS_DASHBOARD>>");
-      setLocais(data.locais); // Corrigido para salvar todos os locais
+      console.log(data.locals, "<<DATA.LOCAIS_DASHBOARD>>");
+      setLocals(data.locals); // Corrigido para salvar todos os locais
 
-      if (data.locais.length > 0) {
-        const indiceAleatorio = Math.floor(Math.random() * data.locais.length);
-        const localAleatorio = data.locais[indiceAleatorio];
+      if (data.locals.length > 0) {
+        const indiceAleatorio = Math.floor(Math.random() * data.locals.length);
+        const localAleatorio = data.locals[indiceAleatorio];
         console.log(localAleatorio, "<<LOCAL_ALEATÓRIO>>");
 
         setLat(localAleatorio.lat);
@@ -76,7 +76,7 @@ export function Dashboard() {
           total={usuarios.length}
           iconElement={UsersRound}
         />
-        <Card title="Locais" total={locais.length} iconElement={MapPinned} />
+        <Card title="Locais" total={locals.length} iconElement={MapPinned} />
       </div>
 
       {lat && lon && (
@@ -102,7 +102,7 @@ export function Dashboard() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {locais.map((local) => (
+              {locals.map((local) => (
                 <TableRow key={local.id}>
                   <TableCell>{local.name}</TableCell>
                   <TableCell>{local.address}</TableCell>

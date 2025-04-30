@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../utils/api";
 
 export function Locais() {
-  const [locais, setLocais] = useState([]);
+  const [locals, setLocals] = useState([]);
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export function Locais() {
       const localData = await localResponse.json();
       console.log(localData, ":::LOCAL_DATA:::");
   
-      const locaisComDescricao = localData.locais.map((local) => {
+      const locaisComDescricao = localData.locals.map((local) => {
         const descricao = localData.descriptionLocal || {}; // Já está no localData
   
         return {
@@ -40,7 +40,7 @@ export function Locais() {
         };
       });
   
-      setLocais(locaisComDescricao);
+      setLocals(locaisComDescricao);
   
     } catch (error) {
       console.error("Erro ao buscar locais:", error);
@@ -91,7 +91,7 @@ export function Locais() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {locais.map((local) => (
+        {locals.map((local) => (
           <TableRow key={local.id}>
             <TableCell>{local.name}</TableCell>
             <TableCell>{local.userId}</TableCell>
