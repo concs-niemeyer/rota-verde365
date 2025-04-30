@@ -41,7 +41,7 @@ export function Dashboard() {
         // Atualize as coordenadas e o nome do local
         setLat(localAleatorio.lat);
         setLon(localAleatorio.lon);
-        setLocationName(localAleatorio.nome);
+        setLocationName(localAleatorio.name);
       } else {
         console.error("Erro ao buscar locais");
       }
@@ -52,12 +52,6 @@ export function Dashboard() {
 
   // Função para buscar usuários
   async function buscarUsuarios() {
-    //  try{
-    //   const response = await fetch("../../server.json")
-    //   const data = await response.json();
-    //   console.log(data.users,"<<DATA_USERS>>")
-
-    //   setUsuarios(data.users)
     try {
       const response = await api("/users"); // URL da API para buscar os usuários
       console.log(response, ":::RESPOSTA_USERS:::")
@@ -115,7 +109,7 @@ export function Dashboard() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {locais.map((local) => (
+              {data.locais.map((local) => (
                 <TableRow key={local.id}>
                   <TableCell>{local.name}</TableCell>
                   <TableCell>{local.address}</TableCell>
