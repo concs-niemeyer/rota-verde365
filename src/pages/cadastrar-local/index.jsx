@@ -42,7 +42,8 @@ const ufs = [
 
 const schema = yup.object().shape({
   name: yup.string().required("O nome é obrigatório"),
-  description: yup.string().required("A descrição é obrigatória"),
+  descFauna: yup.string().required("A descrição é obrigatória"),
+  descFlora: yup.string().required("A descrição é obrigatória"),
   cep: yup.string().matches(/^\d{5}-?\d{3}$/, "CEP inválido. Ex: 12345-678"),
   address: yup.string(),
   numero: yup.string(),
@@ -51,8 +52,8 @@ const schema = yup.object().shape({
 });
 
 export function CadastrarLocal() {
-  const [lat, setLat] = useState("");
-  const [lon, setLon] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
   const [locationName, setLocationName] = useState("");
   const navigate = useNavigate();
 
@@ -76,9 +77,9 @@ export function CadastrarLocal() {
       const data = await response.json();
 
       if (data.length > 0) {
-        const { lat, lon } = data[0];
-        setLat(parseFloat(lat));
-        setLon(parseFloat(lon));
+        const { latitude, longitude } = data[0];
+        setLatitude(parseFloat(lat));
+        setLongitude(parseFloat(lon));
         setLocationName(name);
       } else {
         alert("Local não encontrado.");
@@ -92,8 +93,8 @@ export function CadastrarLocal() {
   async function onSubmit(data) {
     try {
       // Primeiro busca as coordenadas pelo nome do local
-      let lat = lat;
-      let lon = lon;
+      let lat = latitude;
+      let lon = longitude;
 
       if (!lat || !lon) {
         const response = await fetch(
@@ -112,25 +113,21 @@ export function CadastrarLocal() {
       // Estrutura o objeto igual o backend espera
       const localData = {
         name: data.name, // Nome do local
-        address: data.endereco, // Endereço 
+        address: data.address, // Endereço 
         cep: data.cep || "", // CEP (não obrigatório)
         descFlora: data.descFlora, 
         descFauna: data.descFauna, 
         lat: lat,
         lon: lon,
       };
+      console.log("localData:", localData);
 
       // Faz a requisição para seu backend
-      const response = await api("/locals", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // caso precise autenticação
-        },
-        body: JSON.stringify(localData),
-      });
+      const response = await api("/locals");
 
       if (response.ok) {
+        console.log("Dados enviados:", data);
+
         alert("Local cadastrado com sucesso!");
         navigate("/dashboard/locals");
       } else {

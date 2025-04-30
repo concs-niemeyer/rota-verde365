@@ -21,10 +21,10 @@ export function SignIn() {
   async function onSubmit(data) {
     const captchaValue = recaptcha.current?.getValue();
   // localhost comentar esse trecho abaixo
-    // if (!captchaValue) {
-    //   alert("Por favor, confirme que você não é um robô.");
-    //   return;
-    // }
+    if (!captchaValue) {
+      alert("Por favor, confirme que você não é um robô.");
+      return;
+    }
 
     try {
        // Enviando captchaValue junto se precisar validar no backend
