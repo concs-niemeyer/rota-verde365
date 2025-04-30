@@ -98,7 +98,7 @@ export function Locais() {
             <TableCell>{local.address}</TableCell>
             <TableCell>{local.descFauna}</TableCell>
             <TableCell>{local.descFlora}</TableCell>
-            <TableCell>{formatarData(local.dataVisita)}</TableCell>
+            <TableCell>{formatDate(local.dataVisita)}</TableCell>
           </TableRow>
         ))}
       </TableBody>
