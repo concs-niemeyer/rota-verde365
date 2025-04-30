@@ -28,14 +28,14 @@ export function Dashboard() {
       const response = await api("/locals"); // URL da API para buscar os locais
       const data = await response.json();
       console.log(data.locais, "<<DATA.LOCAIS_DASHBOARD>>");
-      setLocais(data.locais);
+      setLocais(data.locais[0]);
       // Verifique se há locais
       if (data.locais.length > 0) {
         // Gere um índice aleatório
         const indiceAleatorio = Math.floor(Math.random() * data.locais.length);
 
         // Pegue o local aleatório usando o índice
-        const localAleatorio = data[indiceAleatorio];
+        const localAleatorio = data.locais[indiceAleatorio];
         console.log(localAleatorio, "<<LOCAL_ALEATÒRIO>>")
 
         // Atualize as coordenadas e o nome do local
