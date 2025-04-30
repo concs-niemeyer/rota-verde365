@@ -25,25 +25,19 @@ export function Dashboard() {
   // Função para buscar locais
   async function buscarLocais() {
     try {
-      const response = await api("/locals"); // URL da API para buscar os locais
+      const response = await api("/locals");
       const data = await response.json();
       console.log(data.locais, "<<DATA.LOCAIS_DASHBOARD>>");
-      setLocais(data.locais[0]);
-      // Verifique se há locais
+      setLocais(data.locais); // Corrigido para salvar todos os locais
+
       if (data.locais.length > 0) {
-        // Gere um índice aleatório
         const indiceAleatorio = Math.floor(Math.random() * data.locais.length);
-
-        // Pegue o local aleatório usando o índice
         const localAleatorio = data.locais[indiceAleatorio];
-        console.log(localAleatorio, "<<LOCAL_ALEATÒRIO>>")
+        console.log(localAleatorio, "<<LOCAL_ALEATÓRIO>>");
 
-        // Atualize as coordenadas e o nome do local
         setLat(localAleatorio.lat);
         setLon(localAleatorio.lon);
         setLocationName(localAleatorio.name);
-      } else {
-        console.error("Erro ao buscar locais");
       }
     } catch (error) {
       console.error("Erro ao buscar locais:", error);
@@ -53,9 +47,8 @@ export function Dashboard() {
   // Função para buscar usuários
   async function buscarUsuarios() {
     try {
-      const response = await api("/users"); // URL da API para buscar os usuários
-      console.log(response, ":::RESPOSTA_USERS:::")
-
+      const response = await api("/users");
+      console.log(response, ":::RESPOSTA_USERS:::");
       if (response.ok) {
         const data = await response.json();
         console.log(data, "<<GET_USERS>>");
@@ -109,7 +102,7 @@ export function Dashboard() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {data.locais.map((local) => (
+              {locais.map((local) => (
                 <TableRow key={local.id}>
                   <TableCell>{local.name}</TableCell>
                   <TableCell>{local.address}</TableCell>
