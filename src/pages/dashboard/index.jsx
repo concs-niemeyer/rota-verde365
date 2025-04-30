@@ -73,7 +73,7 @@ export function Dashboard() {
       <div className="card-dashboard">
         <Card
           title="Usuários"
-          total={usuarios.length}
+          total={usuarios}
           iconElement={UsersRound}
         />
         <Card title="Locais" total={locals.length} iconElement={MapPinned} />
