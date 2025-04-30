@@ -51,8 +51,8 @@ export function Dashboard() {
       console.log(response, ":::RESPOSTA_USERS:::");
       if (response.ok) {
         const data = await response.json();
-        console.log(data, "<<GET_USERS>>");
-        setUsuarios(data);
+        console.log(data.total, "<<GET_USERS>>");
+        setUsuarios(data.total);
       } else {
         console.error("Erro ao buscar usuários");
       }
